@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace CourseWork_SE2
+namespace SE2.CourseWork.CourseWork
 {
     /// <summary>
     /// Interaction logic for App.xaml

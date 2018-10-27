@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CourseWork_SE2.models
+namespace SE2.CourseWork.Models
 {
-    class Group
+    public class Group
     {
         private SortedSet<Student> _students;
         public int NumberOfStudents { get => _students.Count; }

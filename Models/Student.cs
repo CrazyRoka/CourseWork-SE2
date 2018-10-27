@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CourseWork_SE2.models
+namespace SE2.CourseWork.Models
 {
-    class Student : Person
+    public class Student : Person
     {
         public int Course { get; set; }
         public Group Group { get; set; }
         public string Speciality { get => Group.Speciality; }
         public decimal AverageScore { get; set; }
-        public Student(string firstName, string secondName, string thirdName, DateTime birthdayDate, string phoneNumber, int course, Group group, decimal averageScore) : base(firstName, secondName, thirdName, birthdayDate, phoneNumber)
+        public Student(string firstName, string middleName, string lastName, DateTime birthdayDate, string phoneNumber, int course, Group group, decimal averageScore) : base(firstName, middleName, lastName, birthdayDate, phoneNumber)
         {
             Course = course;
             Group = group;

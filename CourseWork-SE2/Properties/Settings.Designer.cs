@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CourseWork_SE2.Properties
+namespace SE2.Properties
 {
 
 
