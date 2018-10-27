@@ -12,7 +12,7 @@ namespace SE2.CourseWork.Models
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
-        public string BirthdayDate { get => _birthdayDate.ToString("yyyy-mm-dd"); set => _birthdayDate = DateTime.Parse(value); }
+        public string BirthdayDate { get => _birthdayDate.ToString("yyyy-MM-dd"); set => _birthdayDate = DateTime.Parse(value); }
         public string PhoneNumber { get; set; }
         public Person()
         {
