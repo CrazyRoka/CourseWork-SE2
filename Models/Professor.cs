@@ -10,6 +10,10 @@ namespace SE2.CourseWork.Models
     {
         public string[] Subjects { get; set; }
         public Group Group { get; set; }
+        public Professor() : base()
+        {
+
+        }
         public Professor(string firstName, string middleName, string lastName, DateTime birthdayDate, string phoneNumber, Group group, params string[] subjects) : base(firstName, middleName, lastName, birthdayDate, phoneNumber)
         {
             Subjects = subjects;

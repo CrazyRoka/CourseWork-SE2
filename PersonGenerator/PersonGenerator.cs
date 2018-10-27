@@ -25,6 +25,7 @@ namespace SE2.CourseWork.Generators
                 IList<Person> data = GenerateList(numberOfItems);
                 using (CsvWriter writer = new CsvWriter(file))
                 {
+                    foreach (Person person in data) Console.WriteLine(person.ToString());
                     writer.WriteRecords(data);
                 }
             }
