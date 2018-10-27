@@ -19,6 +19,7 @@ namespace SE2.CourseWork.Generators
         public static void GenerateData(int numberOfItems) => GenerateData(numberOfItems, "person.dat");
         public static void GenerateData(int numberOfItems, string fileName)
         {
+            Console.WriteLine("Generating persons");
             using (StreamWriter file = new StreamWriter(fileName))
             {
                 IList<Person> data = GenerateList(numberOfItems);
@@ -34,8 +35,8 @@ namespace SE2.CourseWork.Generators
                 .With(person => person.FirstName = Faker.Name.First())
                 .With(person => person.MiddleName = Faker.Name.First())
                 .With(person => person.LastName = Faker.Name.Last())
-                .With(person => person.PhoneNumber = Faker.Phone.Number())
-                .With(person => person.BirthdayDate = RandomDay())
+                .With(person => person.PhoneNumber = RandomNumber())
+                .With(person => person.BirthdayDate = RandomDay().ToString())
                 .Build();
         }
         protected static DateTime RandomDay()
@@ -44,6 +45,13 @@ namespace SE2.CourseWork.Generators
             DateTime end = new DateTime(2002, 1, 1);
             int range = (end - start).Days;
             return start.AddDays(random.Next(range));
+        }
+        protected static string RandomNumber()
+        {
+            string number = "+380";
+            for (int i = 0; i < 9; i++)
+                number += random.Next(10);
+            return number;
         }
     }
 }

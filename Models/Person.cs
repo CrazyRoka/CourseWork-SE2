@@ -8,10 +8,11 @@ namespace SE2.CourseWork.Models
 {
     public class Person
     {
+        private DateTime _birthdayDate;
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
-        public DateTime BirthdayDate { get; set; }
+        public string BirthdayDate { get => _birthdayDate.ToString("yyyy-mm-dd"); set => _birthdayDate = DateTime.Parse(value); }
         public string PhoneNumber { get; set; }
         public Person()
         {
@@ -22,7 +23,7 @@ namespace SE2.CourseWork.Models
             FirstName = firstName;
             MiddleName = middleName;
             LastName = lastName;
-            BirthdayDate = birthdayDate;
+            _birthdayDate = birthdayDate;
             PhoneNumber = phoneNumber;
         }
         public Person(Person clone)
