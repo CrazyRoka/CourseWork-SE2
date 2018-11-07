@@ -35,7 +35,8 @@ namespace SE2.CourseWork.Generators
         {
             return Builder<Group>.CreateListOfSize(numberOfItems).All()
                 .With(group => group.Speciality = Specialities[random.Next(Specialities.Length)])
-                .With(group => group.Name = group.Speciality + random.Next(1, 7) + random.Next(1, 6))
+                .With(group => group.Course = random.Next(1, 7))
+                .With(group => group.Number = group.Course * 10 + random.Next(1, 6))
                 .Build();
         }
 
@@ -45,8 +46,9 @@ namespace SE2.CourseWork.Generators
     {
         public GroupClassMap()
         {
-            Map(m => m.Name).Index(0).Name("Name");
-            Map(m => m.Speciality).Index(1).Name("Speciality");
+            Map(m => m.Speciality).Index(0).Name("Speciality");
+            Map(m => m.Course).Index(1).Name("Course");
+            Map(m => m.Number).Index(2).Name("Number");
         }
     }
 }
