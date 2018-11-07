@@ -19,10 +19,9 @@ namespace SE2.CourseWork.Models
             Subjects = subjects;
             Group = group;
         }
-        public Professor(Professor clone) : base(clone)
+        public Professor(Professor clone) : this(clone.FirstName, clone.MiddleName, clone.LastName, clone._birthdayDate, clone.PhoneNumber, clone.Group, clone.Subjects)
         {
-            // TODO
-            throw new NotImplementedException();
+
         }
     }
 }

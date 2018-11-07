@@ -22,10 +22,9 @@ namespace SE2.CourseWork.Models
             Group = group;
             AverageScore = averageScore;
         }
-        public Student(Student clone) : base(clone)
+        public Student(Student clone) : this(clone.FirstName, clone.MiddleName, clone.LastName, clone._birthdayDate, clone.PhoneNumber, clone.Course, clone.Group, clone.AverageScore)
         {
-            // TODO
-            throw new NotImplementedException();
+
         }
     }
 }

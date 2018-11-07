@@ -8,7 +8,7 @@ namespace SE2.CourseWork.Models
 {
     public class Person
     {
-        private DateTime _birthdayDate;
+        protected DateTime _birthdayDate;
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
@@ -26,10 +26,9 @@ namespace SE2.CourseWork.Models
             _birthdayDate = birthdayDate;
             PhoneNumber = phoneNumber;
         }
-        public Person(Person clone)
+        public Person(Person clone) : this(clone.FirstName, clone.MiddleName, clone.LastName, clone._birthdayDate, clone.PhoneNumber)
         {
-            // TODO
-            throw new NotImplementedException();
+
         }
     }
 }
