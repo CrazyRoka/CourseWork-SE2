@@ -40,6 +40,9 @@
             <TabItem Header="Professors">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
+            <TabItem Header="Groups">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
         </TabControl>
 
     </Grid>

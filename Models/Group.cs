@@ -10,10 +10,14 @@ namespace SE2.CourseWork.Models
     {
         private SortedSet<Student> _students;
         public int NumberOfStudents { get => _students.Count; }
-        public string Name { get; }
-        public string Speciality { get; }
+        public string Name { get; set; }
+        public string Speciality { get; set; }
         public Professor Curator { get; set; }
         public List<Student> Students { get => _students.ToList(); }
+        public Group()
+        {
+
+        }
         public Group(string name, string speciality, Professor curator, params Student[] students)
         {
             Curator = curator;
