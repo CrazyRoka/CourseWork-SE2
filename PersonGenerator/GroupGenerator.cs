@@ -26,7 +26,7 @@ namespace SE2.CourseWork.Generators
                 IList<Group> data = GenerateList(numberOfItems);
                 using (CsvWriter writer = new CsvWriter(file))
                 {
-                    writer.Configuration.RegisterClassMap<PersonClassMap>();
+                    writer.Configuration.RegisterClassMap<GroupClassMap>();
                     writer.WriteRecords(data);
                 }
             }
@@ -41,9 +41,9 @@ namespace SE2.CourseWork.Generators
 
     }
 
-    sealed class PersonClassMap : ClassMap<Group> 
+    public sealed class GroupClassMap : ClassMap<Group> 
     {
-        public PersonClassMap()
+        public GroupClassMap()
         {
             Map(m => m.Name).Index(0).Name("Name");
             Map(m => m.Speciality).Index(1).Name("Speciality");

@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using CsvHelper;
 using System.IO;
 using SE2.CourseWork.Models;
+using SE2.CourseWork.Generators;
 
 namespace SE2.CourseWork
 {
@@ -38,6 +39,15 @@ namespace SE2.CourseWork
             }
         }
 
+        private void ReadGroups(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                readGroupsData(openFileDialog.FileName);
+            }
+        }
+
         private void readPersonData(string fileName)
         {
             using (StreamReader file = new StreamReader(fileName))
@@ -46,6 +56,19 @@ namespace SE2.CourseWork
                 {
                     List<Person> persons = new List<Person>(reader.GetRecords<Person>());
                     PersonTable.ItemsSource = persons;
+                }
+            }
+        }
+
+        private void readGroupsData(string fileName)
+        {
+            using (StreamReader file = new StreamReader(fileName))
+            {
+                using (CsvReader reader = new CsvReader(file))
+                {
+                    reader.Configuration.RegisterClassMap<GroupClassMap>();
+                    List<Group> groups = new List<Group>(reader.GetRecords<Group>());
+                    GroupTable.ItemsSource = groups;
                 }
             }
         }

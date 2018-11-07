@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace SE2.CourseWork.Models
         public string Name { get; set; }
         public string Speciality { get; set; }
         public Professor Curator { get; set; }
+        public string CuratorsName() => Curator?.FullName() ?? "";
         public List<Student> Students { get => _students.ToList(); }
         public Group()
         {

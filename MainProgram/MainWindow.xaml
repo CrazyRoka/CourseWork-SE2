@@ -41,7 +41,18 @@
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
             <TabItem Header="Groups">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="GroupTable" AutoGenerateColumns="False" HorizontalGridLinesBrush="DarkGray"
+                              RowBackground="LightGray" AlternatingRowBackground="White"  Cursor="Arrow"
+                              CanUserDeleteRows="False" CanUserAddRows="False" Margin="0,0,0,50">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Назва групи" Binding="{Binding Path=Name}" Width="*" />
+                            <DataGridTextColumn Header="Спеціальність" Binding="{Binding Path=Speciality}" Width="*" />
+                            <DataGridTextColumn Header="Куратор" Binding="{Binding Path=CuratorsName}" IsReadOnly="True" Width="*" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Content="Read Groups from file" Margin="13,0,0,10" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="150" Click="ReadGroups"/>
+                </Grid>
             </TabItem>
         </TabControl>
 
