@@ -20,14 +20,13 @@ namespace SE2.CourseWork.Generators
         public static void GenerateData(int numberOfItems, string fileName)
         {
             Console.WriteLine("Generating students");
-            using (StreamWriter file = new StreamWriter(fileName))
+            StreamWriter file = new StreamWriter(fileName);
+            IList<Student> data = GenerateList(numberOfItems);
+            foreach(Student student in data)
             {
-                IList<Student> data = GenerateList(numberOfItems);
-                foreach(Student student in data)
-                {
-                    file += student;
-                }
+                file += student;
             }
+            file.Close();
         }
         protected static IList<Student> GenerateList(int numberOfItems)
         {
@@ -50,7 +49,7 @@ namespace SE2.CourseWork.Generators
         }
         protected static Group RandomGroup()
         {
-            return new Group(Specialities[random.Next(Specialities.Length - 1)], random.Next(1, 7), random.Next(1, 6), null, null);
+            return new Group(Specialities[random.Next(Specialities.Length - 1)], random.Next(1, 7), random.Next(1, 6), null);
         }
         protected static string RandomNumber()
         {

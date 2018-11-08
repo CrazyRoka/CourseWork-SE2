@@ -15,6 +15,7 @@ namespace SE2.CourseWork.Models
         public int Course { get; set; }
         public int Number { get; set; }
         public Professor Curator { get; set; }
+        public string GroupName { get => Speciality + Course + Number; }
         public string CuratorsName() => Curator?.FullName() ?? "";
         public List<Student> Students { get => _students.ToList(); }
         public Group()
@@ -24,10 +25,16 @@ namespace SE2.CourseWork.Models
         public Group(string speciality, int course, int number, Professor curator, params Student[] students)
         {
             Speciality = speciality;
+            Course = course;
             Number = number;
             Curator = curator;
             Speciality = speciality;
             _students = new SortedSet<Student>(students);
+        }
+        public Group(string groupName)
+        {
+            // TODO
+            throw new NotImplementedException();
         }
         public void AddStudent(Student student) => _students.Add(student);
         public bool DeleteStudent(Student student) => _students.Remove(student);
