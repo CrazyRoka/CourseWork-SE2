@@ -10,7 +10,7 @@
         Title="MainWindow" Height="633.7" Width="1163.66">
     <Grid>
         <TabControl>
-            <TabItem Header="Persons">
+            <TabItem Header="Персони">
                 <Grid Background="#FFE5E5E5">
                     <DataGrid x:Name="PersonTable" AutoGenerateColumns="False" HorizontalGridLinesBrush="DarkGray"
                               RowBackground="LightGray" AlternatingRowBackground="White"  Cursor="Arrow"
@@ -34,7 +34,7 @@
                     <Button Content="Read Persons from file" Margin="13,0,0,10" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="150" Click="ReadPersons"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Students">
+            <TabItem Header="Студенти">
                 <Grid x:Name="FindByAverageScore" Background="#FFE5E5E5" ToolTip="Введіть шукане значення тут">
                     <DataGrid x:Name="StudentTable" AutoGenerateColumns="False" HorizontalGridLinesBrush="DarkGray"
                               RowBackground="LightGray" AlternatingRowBackground="White"  Cursor="Arrow"
@@ -68,7 +68,7 @@
                     <Button x:Name="FindButton" Content="Знайти студента(ів)" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="293" Height="30" Click="FindButtonClick" />
                 </Grid>
             </TabItem>
-            <TabItem Header="Professors">
+            <TabItem Header="Викладачі">
                 <Grid Background="#FFE5E5E5">
                     <DataGrid x:Name="ProfessorTable" AutoGenerateColumns="False" HorizontalGridLinesBrush="DarkGray"
                               RowBackground="LightGray" AlternatingRowBackground="White"  Cursor="Arrow"
@@ -92,9 +92,10 @@
                         </DataGrid.Columns>
                     </DataGrid>
                     <Button Content="Read Students from file" Margin="13,0,0,10" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="150" Click="ReadProfessors"/>
+                    <Button Content="Button" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="144" Height="35" Click="FindBestMarkButtonClick"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Groups">
+            <TabItem Header="Групи">
                 <Grid Background="#FFE5E5E5">
                     <DataGrid x:Name="GroupTable" AutoGenerateColumns="False" HorizontalGridLinesBrush="DarkGray"
                               RowBackground="LightGray" AlternatingRowBackground="White"  Cursor="Arrow"

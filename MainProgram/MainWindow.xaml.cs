@@ -31,6 +31,54 @@ namespace SE2.CourseWork
             InitializeComponent();
             GroupTable.ItemsSource = GroupsContainer.Groups;
         }
+        private void FindBestMarkButtonClick(object sender, RoutedEventArgs e)
+        {
+            string answer;
+            if (ProfessorTable.SelectedItems.Count == 0)
+            {
+                answer = "Виберіть викладача для пошуку.";
+            }else if(ProfessorTable.SelectedItems.Count > 1)
+            {
+                answer = "Виберіть лише одного викладача.";
+            }
+            else
+            {
+                Professor professor = (Professor)ProfessorTable.SelectedItem;
+                if(professor.Group == null)
+                {
+                    answer = "Даний викладач не є куратором жодної групи.";
+                }
+                else
+                {
+                    IEnumerable<Student> students = (IEnumerable<Student>)StudentTable.ItemsSource;
+                    if (students != null)
+                    {
+                        students = students.Where(student => string.Equals(student.GroupName, professor.GroupName));
+                        if (students.Count() == 0)
+                        {
+                            answer = "Група не має жодного студента.";
+                        }
+                        else
+                        {
+                            Student bestStudent = students.First();
+                            foreach (Student current in students)
+                            {
+                                if (current.AverageScore > bestStudent.AverageScore)
+                                {
+                                    bestStudent = current;
+                                }
+                            }
+                            answer = bestStudent.ToString();
+                        }
+                    }
+                    else
+                    {
+                        answer = "Завантажте дані про студентів.";
+                    }
+                }
+            }
+            MessageBox.Show(answer, "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
         private void FindButtonClick(object sender, RoutedEventArgs e)
         {
             string text = FindTextBox.Text;

@@ -14,7 +14,7 @@ namespace SE2.CourseWork.Models
         public string LastName { get; set; }
         public string BirthdayDate { get => _birthdayDate.ToString("yyyy-MM-dd"); set => _birthdayDate = DateTime.Parse(value); }
         public string PhoneNumber { get; set; }
-        public string FullName() => $"{FirstName} {MiddleName} {LastName}";
+        public string FullName() => $"{LastName} {MiddleName} {FirstName}";
         public Person()
         {
 
