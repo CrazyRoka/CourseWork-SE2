@@ -72,8 +72,10 @@
                               CanUserDeleteRows="False" CanUserAddRows="False" Margin="0,0,0,50">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Спеціальність" Binding="{Binding Path=Speciality}" Width="*" />
+                            <DataGridTextColumn Header="Кафедра" Binding="{Binding Path=SpecialityFullName}" Width="*" />
                             <DataGridTextColumn Header="Курс" Binding="{Binding Path=Course}" Width="*" />
                             <DataGridTextColumn Header="Номер групи" Binding="{Binding Path=Number}" Width="*" />
+                            <DataGridTextColumn Header="Кількість студентів" Binding="{Binding Path=NumberOfStudents}" IsReadOnly="True" Width="*" />
                             <DataGridTextColumn Header="Куратор" Binding="{Binding Path=CuratorsName}" IsReadOnly="True" Width="*" />
                         </DataGrid.Columns>
                     </DataGrid>

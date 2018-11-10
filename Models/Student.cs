@@ -46,6 +46,7 @@ namespace SE2.CourseWork.Models
             student.FirstName = parts[0]; student.MiddleName = parts[1]; student.LastName = parts[2]; student.BirthdayDate = parts[3];
             student.PhoneNumber = parts[4]; student.Group = GroupsContainer.FindOrCreateGroup(parts[5], parts[6]);
             student.AverageScore = Decimal.Parse(parts[7]);
+            student.Group.AddStudent(student);
             return reader;
         }
     }

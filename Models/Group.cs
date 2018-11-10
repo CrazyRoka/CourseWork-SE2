@@ -10,7 +10,7 @@ namespace SE2.CourseWork.Models
 {
     public class Group
     {
-        private SortedSet<Student> _students;
+        private List<Student> _students;
         public int NumberOfStudents { get => _students.Count; }
         public string Speciality { get; set; }
         public string SpecialityFullName { get; set; }
@@ -31,7 +31,7 @@ namespace SE2.CourseWork.Models
             Course = course;
             Number = number;
             Curator = curator;
-            _students = new SortedSet<Student>(students);
+            _students = new List<Student>(students);
         }
         public Group(string groupName, string specialityName)
         {
@@ -42,7 +42,7 @@ namespace SE2.CourseWork.Models
                 Course = int.Parse(match.Groups[2].Value);
                 Number = int.Parse(match.Groups[3].Value);
                 SpecialityFullName = specialityName;
-                _students = new SortedSet<Student>();
+                _students = new List<Student>();
             }
             else
             {
