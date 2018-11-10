@@ -54,8 +54,8 @@
                             </DataGridTextColumn>
                             <DataGridTextColumn Header="Номер телефону" Binding="{Binding Path=PhoneNumber}" Width="*" />
                             <DataGridTextColumn Header="Курс" Binding="{Binding Path=Course}" IsReadOnly="True" Width="50" />
-                            <DataGridTextColumn Header="Група" Binding="{Binding Path=GroupName}" IsReadOnly="True" Width="*" />
-                            <DataGridTextColumn Header="Кафедра" Binding="{Binding Path=Speciality}" IsReadOnly="True" Width="150" />
+                            <DataGridTextColumn Header="Група" Binding="{Binding Path=GroupName}" Width="*" />
+                            <DataGridTextColumn Header="Кафедра" Binding="{Binding Path=Speciality}" Width="150" />
                             <DataGridTextColumn Header="Середній бал" Binding="{Binding Path=AverageScore}" Width="*" />
                         </DataGrid.Columns>
                     </DataGrid>
