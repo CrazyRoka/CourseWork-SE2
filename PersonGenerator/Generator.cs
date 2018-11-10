@@ -12,6 +12,7 @@ namespace SE2.CourseWork.Generators
         {
             PersonGenerator.GenerateData(1000);
             StudentGenerator.GenerateData(1000);
+            ProfessorGenerator.GenerateData(1000);
             GroupGenerator.GenerateData(10);
         }
     }

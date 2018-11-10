@@ -10,24 +10,25 @@ using System.Threading.Tasks;
 
 namespace SE2.CourseWork.Generators
 {
-    public class StudentGenerator
+    public class ProfessorGenerator
     {
         private static Random random = new Random();
         private static readonly string[] Specialities = { "ПЗ", "КН", "БД", "ІР", "КІ", "СА" };
         private static readonly Dictionary<string, string> fullName = new Dictionary<string, string> { { "ПЗ", "Програмне забезпечення" }, { "КН", "Комп'ютерні науки" }, { "БД", "Бази даних" }, { "ІР", "Інтернет речі" }, { "КІ", "Комп'ютерна інженерія" }, { "СА", "Системний аналіз" } };
-        public static void GenerateData() => GenerateData("student.dat");
+        private static readonly string[] Subjects = { "Математичний аналіз", "Основи програмування", "Об'єктно орієнтоване програмування", "Дискретна математика", "Чисельні методи", "Основи баз даних", "ВІПЗ", "Алгоритми і структури даних" };
+        public static void GenerateData() => GenerateData("vykladach.dat");
         public static void GenerateData(string fileName) => GenerateData(random.Next(5, 100), fileName);
-        public static void GenerateData(int numberOfItems) => GenerateData(numberOfItems, "student.dat");
+        public static void GenerateData(int numberOfItems) => GenerateData(numberOfItems, "vykladach.dat");
         public static void GenerateData(int numberOfItems, string fileName)
         {
-            Console.WriteLine("Generating students");
+            Console.WriteLine("Generating professors");
             StreamWriter file = new StreamWriter(fileName);
             try
             {
-                IList<Student> data = GenerateList(numberOfItems);
-                foreach (Student student in data)
+                IList<Professor> data = GenerateList(numberOfItems);
+                foreach (Professor professor in data)
                 {
-                    file += student;
+                    file += professor;
                 }
             }
             finally
@@ -35,12 +36,13 @@ namespace SE2.CourseWork.Generators
                 file.Close();
             }
         }
-        protected static IList<Student> GenerateList(int numberOfItems)
+        protected static IList<Professor> GenerateList(int numberOfItems)
         {
-            IList<Student> list = new List<Student>(numberOfItems);
+            IList<Professor> list = new List<Professor>(numberOfItems);
             for (int i = 0; i < numberOfItems; i++)
             {
-                list.Add(new Student(Faker.Name.First(), Faker.Name.First(), Faker.Name.Last(), RandomDay(), RandomNumber(), RandomGroup(), decimal.Round((decimal)random.NextDouble() * 100, 2)));
+                list.Add(new Professor(Faker.Name.First(), Faker.Name.First(), Faker.Name.Last(), RandomDay(), 
+                    RandomNumber(), RandomGroup(), Subjects.OrderBy(x => random.Next()).Take(random.Next(1, Subjects.Length)).ToArray()));
             }
             return list;
         }

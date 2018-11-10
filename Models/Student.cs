@@ -11,15 +11,15 @@ namespace SE2.CourseWork.Models
     {
         public Group Group { get; set; }
         public string GroupName {
-            get => Group.GroupName;
+            get => Group?.GroupName;
             set
             {
-                Group.DeleteStudent(this);
+                Group?.DeleteStudent(this);
                 Group = GroupsContainer.FindOrCreateGroup(value, Speciality);
                 Group.AddStudent(this);
             }
         }
-        public string Speciality { get => Group.SpecialityFullName; set => Group.SpecialityFullName = value; }
+        public string Speciality { get => Group?.SpecialityFullName; set => Group.SpecialityFullName = value; }
         public int Course { get => Group.Course; }
         public decimal AverageScore { get; set; }
         public Student() : base()
