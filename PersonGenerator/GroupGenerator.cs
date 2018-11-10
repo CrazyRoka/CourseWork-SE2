@@ -36,7 +36,7 @@ namespace SE2.CourseWork.Generators
             return Builder<Group>.CreateListOfSize(numberOfItems).All()
                 .With(group => group.Speciality = Specialities[random.Next(Specialities.Length)])
                 .With(group => group.Course = random.Next(1, 7))
-                .With(group => group.Number = group.Course * 10 + random.Next(1, 6))
+                .With(group => group.Number = random.Next(1, 15))
                 .Build();
         }
 

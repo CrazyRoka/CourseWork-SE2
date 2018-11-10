@@ -21,12 +21,18 @@ namespace SE2.CourseWork.Generators
         {
             Console.WriteLine("Generating students");
             StreamWriter file = new StreamWriter(fileName);
-            IList<Student> data = GenerateList(numberOfItems);
-            foreach(Student student in data)
+            try
             {
-                file += student;
+                IList<Student> data = GenerateList(numberOfItems);
+                foreach (Student student in data)
+                {
+                    file += student;
+                }
             }
-            file.Close();
+            finally
+            {
+                file.Close();
+            }
         }
         protected static IList<Student> GenerateList(int numberOfItems)
         {

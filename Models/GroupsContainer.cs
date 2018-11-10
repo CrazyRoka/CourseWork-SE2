@@ -10,7 +10,7 @@ namespace SE2.CourseWork.Models
 {
     public static class GroupsContainer
     {
-        public static ObservableCollection<Group> Groups { get; set; }
+        public static ObservableCollection<Group> Groups { get; set; } = new ObservableCollection<Group>();
         public static Group FindOrCreateGroup(string groupName)
         {
             var result = Groups.Where(group => group.GroupName.Equals(groupName));

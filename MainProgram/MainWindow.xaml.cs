@@ -30,12 +30,20 @@ namespace SE2.CourseWork
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ReadPersons(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if(openFileDialog.ShowDialog() == true)
             {
                 readPersonData(openFileDialog.FileName);
+            }
+        }
+        private void ReadStudents(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                readStudentData(openFileDialog.FileName);
             }
         }
 
@@ -45,6 +53,26 @@ namespace SE2.CourseWork
             if (openFileDialog.ShowDialog() == true)
             {
                 readGroupsData(openFileDialog.FileName);
+            }
+        }
+
+        private void readStudentData(string fileName)
+        {
+            StreamReader file = new StreamReader(fileName);
+            try
+            {
+                List<Student> students = new List<Student>();
+                while (!file.EndOfStream)
+                {
+                    Student current = new Student();
+                    file -= current;
+                    students.Add(current);
+                }
+                StudentTable.ItemsSource = students;
+            }
+            finally
+            {
+                file.Close();
             }
         }
 

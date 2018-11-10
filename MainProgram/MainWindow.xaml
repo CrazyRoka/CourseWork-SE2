@@ -31,11 +31,32 @@
                             <DataGridTextColumn Header="Номер телефону" Binding="{Binding Path=PhoneNumber}" Width="*" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button Content="Read Persons from file" Margin="13,0,0,10" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="150" Click="Button_Click"/>
+                    <Button Content="Read Persons from file" Margin="13,0,0,10" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="150" Click="ReadPersons"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Students">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="StudentTable" AutoGenerateColumns="False" HorizontalGridLinesBrush="DarkGray"
+                              RowBackground="LightGray" AlternatingRowBackground="White"  Cursor="Arrow"
+                              CanUserDeleteRows="False" CanUserAddRows="False" Margin="0,0,0,50">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Ім'я" Binding="{Binding Path=FirstName}" Width="*" />
+                            <DataGridTextColumn Header="Прізвище" Binding="{Binding Path=MiddleName}" Width="*" />
+                            <DataGridTextColumn Header="По батькові" Binding="{Binding Path=LastName}" Width="*" />
+                            <DataGridTextColumn Header="Дата народження" Width="*" >
+                                <DataGridTextColumn.Binding>
+                                    <Binding Path="BirthdayDate">
+                                        <Binding.ValidationRules>
+                                            <local:DateValidationRule />
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Номер телефону" Binding="{Binding Path=PhoneNumber}" Width="*" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Content="Read Students from file" Margin="13,0,0,10" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="150" Click="ReadStudents"/>
+                </Grid>
             </TabItem>
             <TabItem Header="Professors">
                 <Grid Background="#FFE5E5E5"/>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace SE2.CourseWork.Models
@@ -28,13 +29,22 @@ namespace SE2.CourseWork.Models
             Course = course;
             Number = number;
             Curator = curator;
-            Speciality = speciality;
             _students = new SortedSet<Student>(students);
         }
         public Group(string groupName)
         {
-            // TODO
-            throw new NotImplementedException();
+            Regex regex = new Regex(@"\A([A-Z]+)([1-6])([0-9]+)\z");
+            if (regex.IsMatch(groupName)){
+                Match match = regex.Match(groupName);
+                Speciality = match.Groups[1].Value;
+                Course = int.Parse(match.Groups[2].Value);
+                Number = int.Parse(match.Groups[3].Value);
+                _students = new SortedSet<Student>();
+            }
+            else
+            {
+                throw new FormatException("Invalid group name!");
+            }
         }
         public void AddStudent(Student student) => _students.Add(student);
         public bool DeleteStudent(Student student) => _students.Remove(student);
