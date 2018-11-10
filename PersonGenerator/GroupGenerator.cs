@@ -14,7 +14,8 @@ namespace SE2.CourseWork.Generators
     class GroupGenerator
     {
         private static Random random = new Random();
-        private static readonly string[] Specialities = { "SE", "CS", "DB", "IOT" };
+        private static readonly string[] Specialities = { "ПЗ", "КН", "БД", "ІР", "КІ", "СА" };
+        private static readonly Dictionary<string, string> fullName = new Dictionary<string, string> { { "ПЗ", "Програмне забезпечення" }, { "КН", "Комп'ютерні науки" }, { "БД", "Бази даних" }, { "ІР", "Інтернет речі" }, { "КІ", "Комп'ютерна інженерія" }, { "СА", "Системний аналіз" } };
         public static void GenerateData() => GenerateData("group.dat");
         public static void GenerateData(string fileName) => GenerateData(random.Next(5, 100), fileName);
         public static void GenerateData(int numberOfItems) => GenerateData(numberOfItems, "group.dat");
@@ -37,6 +38,7 @@ namespace SE2.CourseWork.Generators
                 .With(group => group.Speciality = Specialities[random.Next(Specialities.Length)])
                 .With(group => group.Course = random.Next(1, 7))
                 .With(group => group.Number = random.Next(1, 15))
+                .With(group => group.SpecialityFullName = fullName[group.Speciality])
                 .Build();
         }
 
@@ -46,9 +48,10 @@ namespace SE2.CourseWork.Generators
     {
         public GroupClassMap()
         {
-            Map(m => m.Speciality).Index(0).Name("Speciality");
-            Map(m => m.Course).Index(1).Name("Course");
-            Map(m => m.Number).Index(2).Name("Number");
+            Map(m => m.Speciality).Index(0).Name("Спеціальність");
+            Map(m => m.SpecialityFullName).Index(1).Name("Кафедра");
+            Map(m => m.Course).Index(2).Name("Курс");
+            Map(m => m.Number).Index(3).Name("Номер групи");
         }
     }
 }

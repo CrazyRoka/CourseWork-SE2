@@ -11,7 +11,7 @@ namespace SE2.CourseWork.Models
     {
         public Group Group { get; set; }
         public string GroupName { get => Group.GroupName; }
-        public string Speciality { get => Group.Speciality; }
+        public string Speciality { get => Group.SpecialityFullName; }
         public int Course { get => Group.Course; }
         public decimal AverageScore { get; set; }
         public Student() : base()
@@ -31,7 +31,7 @@ namespace SE2.CourseWork.Models
         {
             writer.WriteLine($"{student.FirstName},{student.MiddleName}" +
                 $",{student.LastName},{student.BirthdayDate},{student.PhoneNumber}," +
-                $"{student.GroupName},{student.AverageScore}");
+                $"{student.GroupName},{student.Speciality},{student.AverageScore}");
             return writer;
         }
         public static StreamReader operator -(StreamReader reader, Student student)
@@ -44,8 +44,8 @@ namespace SE2.CourseWork.Models
             // PATTERN MATCH
             string[] parts = line.Split(',');
             student.FirstName = parts[0]; student.MiddleName = parts[1]; student.LastName = parts[2]; student.BirthdayDate = parts[3];
-            student.PhoneNumber = parts[4]; student.Group = GroupsContainer.FindOrCreateGroup(parts[5]);
-            student.AverageScore = Decimal.Parse(parts[6]);
+            student.PhoneNumber = parts[4]; student.Group = GroupsContainer.FindOrCreateGroup(parts[5], parts[6]);
+            student.AverageScore = Decimal.Parse(parts[7]);
             return reader;
         }
     }

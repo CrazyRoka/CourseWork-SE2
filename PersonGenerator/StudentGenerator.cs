@@ -14,6 +14,7 @@ namespace SE2.CourseWork.Generators
     {
         private static Random random = new Random();
         private static readonly string[] Specialities = { "ПЗ", "КН", "БД", "ІР", "КІ", "СА" };
+        private static readonly Dictionary<string, string> fullName = new Dictionary<string, string> { { "ПЗ", "Програмне забезпечення" }, { "КН", "Комп'ютерні науки" }, { "БД", "Бази даних" }, { "ІР", "Інтернет речі" }, { "КІ", "Комп'ютерна інженерія" }, { "СА", "Системний аналіз" } };
         public static void GenerateData() => GenerateData("student.dat");
         public static void GenerateData(string fileName) => GenerateData(random.Next(5, 100), fileName);
         public static void GenerateData(int numberOfItems) => GenerateData(numberOfItems, "student.dat");
@@ -55,7 +56,8 @@ namespace SE2.CourseWork.Generators
         }
         protected static Group RandomGroup()
         {
-            return new Group(Specialities[random.Next(Specialities.Length - 1)], random.Next(1, 7), random.Next(1, 15), null);
+            string speciality = Specialities[random.Next(Specialities.Length - 1)];
+            return new Group(speciality,  fullName[speciality], random.Next(1, 7), random.Next(1, 15), null);
         }
         protected static string RandomNumber()
         {
