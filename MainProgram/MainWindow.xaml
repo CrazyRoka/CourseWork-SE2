@@ -71,6 +71,7 @@
                               RowBackground="LightGray" AlternatingRowBackground="White"  Cursor="Arrow"
                               CanUserDeleteRows="False" CanUserAddRows="False" Margin="0,0,0,50">
                         <DataGrid.Columns>
+                            <DataGridTextColumn Header="Група" Binding="{Binding Path=GroupName}" IsReadOnly="True" Width="*" />
                             <DataGridTextColumn Header="Спеціальність" Binding="{Binding Path=Speciality}" Width="*" />
                             <DataGridTextColumn Header="Кафедра" Binding="{Binding Path=SpecialityFullName}" Width="*" />
                             <DataGridTextColumn Header="Курс" Binding="{Binding Path=Course}" Width="*" />

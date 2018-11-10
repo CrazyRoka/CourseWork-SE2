@@ -10,7 +10,15 @@ namespace SE2.CourseWork.Models
     public class Student : Person
     {
         public Group Group { get; set; }
-        public string GroupName { get => Group.GroupName; set => Group = GroupsContainer.FindOrCreateGroup(value, Speciality); }
+        public string GroupName {
+            get => Group.GroupName;
+            set
+            {
+                Group.DeleteStudent(this);
+                Group = GroupsContainer.FindOrCreateGroup(value, Speciality);
+                Group.AddStudent(this);
+            }
+        }
         public string Speciality { get => Group.SpecialityFullName; set => Group.SpecialityFullName = value; }
         public int Course { get => Group.Course; }
         public decimal AverageScore { get; set; }
