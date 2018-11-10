@@ -57,5 +57,10 @@ namespace SE2.CourseWork.Models
             student.Group.AddStudent(student);
             return reader;
         }
+
+        public override string ToString()
+        {
+            return $"{base.ToString()} {GroupName} {Speciality} {AverageScore}";
+        }
     }
 }

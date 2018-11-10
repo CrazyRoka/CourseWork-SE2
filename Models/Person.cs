@@ -31,5 +31,9 @@ namespace SE2.CourseWork.Models
         {
 
         }
+        public override string ToString()
+        {
+            return $"{FullName()} {BirthdayDate} {PhoneNumber}";
+        }
     }
 }

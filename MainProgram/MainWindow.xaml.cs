@@ -31,7 +31,57 @@ namespace SE2.CourseWork
             InitializeComponent();
             GroupTable.ItemsSource = GroupsContainer.Groups;
         }
-
+        private void FindButtonClick(object sender, RoutedEventArgs e)
+        {
+            string text = FindTextBox.Text;
+            string answer;
+            if (FindByLastName.IsChecked == true)
+            {
+                IEnumerable<Student> students = (IEnumerable<Student>)StudentTable.ItemsSource;
+                students = students.Where(student => student.LastName.Equals(text));
+                if (students.Count() == 0) answer = "Не знайдено такого студента";
+                else
+                {
+                    answer = string.Join("\n", students);
+                }
+            }else if (FindByGroup.IsChecked == true)
+            {
+                IEnumerable<Student> students = (IEnumerable<Student>)StudentTable.ItemsSource;
+                students = students.Where(student => student.GroupName.Equals(text));
+                if (students.Count() == 0) answer = "Не знайдено такого студента";
+                else
+                {
+                    answer = string.Join("\n", students);
+                }
+            }
+            else if (FindByAverageScore1.IsChecked == true)
+            {
+                try
+                {
+                    IEnumerable<Student> students = (IEnumerable<Student>)StudentTable.ItemsSource;
+                    students = students.Where(student => student.AverageScore.Equals(decimal.Parse(text.Replace(',','.'))));
+                    if (students.Count() == 0) answer = "Не знайдено такого студента";
+                    else
+                    {
+                        answer = string.Join("\n", students);
+                    }
+                }
+                catch(FormatException)
+                {
+                    answer = "Неправильне введене число!";
+                }
+                catch (OverflowException)
+                {
+                    answer = "Введене число занадто велике (мале)";
+                }
+            }
+            else
+            {
+                //TODO
+                throw new NotImplementedException();
+            }
+            MessageBox.Show(answer, "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
         private void ReadPersons(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();

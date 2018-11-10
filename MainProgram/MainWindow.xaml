@@ -7,7 +7,7 @@
         xmlns:Models="clr-namespace:SE2.CourseWork.Models;assembly=Models"
         x:Class="SE2.CourseWork.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="503.925" Width="1163.66">
+        Title="MainWindow" Height="633.7" Width="1163.66">
     <Grid>
         <TabControl>
             <TabItem Header="Persons">
@@ -16,9 +16,9 @@
                               RowBackground="LightGray" AlternatingRowBackground="White"  Cursor="Arrow"
                               CanUserDeleteRows="False" CanUserAddRows="False" Margin="0,0,0,50">
                         <DataGrid.Columns>
+                            <DataGridTextColumn Header="Прізвище" Binding="{Binding Path=LastName}" Width="*" />
                             <DataGridTextColumn Header="Ім'я" Binding="{Binding Path=FirstName}" Width="*" />
-                            <DataGridTextColumn Header="Прізвище" Binding="{Binding Path=MiddleName}" Width="*" />
-                            <DataGridTextColumn Header="По батькові" Binding="{Binding Path=LastName}" Width="*" />
+                            <DataGridTextColumn Header="По батькові" Binding="{Binding Path=MiddleName}" Width="*" />
                             <DataGridTextColumn Header="Дата народження" Width="*" >
                                 <DataGridTextColumn.Binding>
                                     <Binding Path="BirthdayDate">
@@ -35,14 +35,14 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Students">
-                <Grid Background="#FFE5E5E5">
+                <Grid x:Name="FindByAverageScore" Background="#FFE5E5E5" ToolTip="Введіть шукане значення тут">
                     <DataGrid x:Name="StudentTable" AutoGenerateColumns="False" HorizontalGridLinesBrush="DarkGray"
                               RowBackground="LightGray" AlternatingRowBackground="White"  Cursor="Arrow"
-                              CanUserDeleteRows="False" CanUserAddRows="False" Margin="0,0,0,50">
+                              CanUserDeleteRows="False" CanUserAddRows="False" Margin="0,0,0,164">
                         <DataGrid.Columns>
+                            <DataGridTextColumn Header="Прізвище" Binding="{Binding Path=LastName}" Width="*" />
                             <DataGridTextColumn Header="Ім'я" Binding="{Binding Path=FirstName}" Width="*" />
-                            <DataGridTextColumn Header="Прізвище" Binding="{Binding Path=MiddleName}" Width="*" />
-                            <DataGridTextColumn Header="По батькові" Binding="{Binding Path=LastName}" Width="*" />
+                            <DataGridTextColumn Header="По батькові" Binding="{Binding Path=MiddleName}" Width="*" />
                             <DataGridTextColumn Header="Дата народження" Width="*" >
                                 <DataGridTextColumn.Binding>
                                     <Binding Path="BirthdayDate">
@@ -59,7 +59,13 @@
                             <DataGridTextColumn Header="Середній бал" Binding="{Binding Path=AverageScore}" Width="*" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button Content="Read Students from file" Margin="13,0,0,10" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="150" Click="ReadStudents"/>
+                    <Button Content="Read Students from file" Margin="10,0,0,124" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="150" Click="ReadStudents"/>
+                    <Label Content="Пошук студента за:" HorizontalAlignment="Left" Margin="10,0,0,93" VerticalAlignment="Bottom"/>
+                    <RadioButton x:Name="FindByLastName" Content="Прізвищем" HorizontalAlignment="Left" Margin="10,0,0,73" VerticalAlignment="Bottom" IsChecked="True"/>
+                    <RadioButton x:Name="FindByGroup" Content="Групою" HorizontalAlignment="Left" Margin="112,0,0,73" VerticalAlignment="Bottom"/>
+                    <RadioButton x:Name="FindByAverageScore1" Content="Середнім балом" HorizontalAlignment="Left" Margin="194,0,0,73" VerticalAlignment="Bottom"/>
+                    <TextBox x:Name="FindTextBox" HorizontalAlignment="Left" Height="23" Margin="10,0,0,45" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="293" ToolTip="Введіть шукане значення тут"/>
+                    <Button x:Name="FindButton" Content="Знайти студента(ів)" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="293" Height="30" Click="FindButtonClick" />
                 </Grid>
             </TabItem>
             <TabItem Header="Professors">
@@ -68,9 +74,9 @@
                               RowBackground="LightGray" AlternatingRowBackground="White"  Cursor="Arrow"
                               CanUserDeleteRows="False" CanUserAddRows="False" Margin="0,0,0,50">
                         <DataGrid.Columns>
+                            <DataGridTextColumn Header="Прізвище" Binding="{Binding Path=LastName}" Width="*" />
                             <DataGridTextColumn Header="Ім'я" Binding="{Binding Path=FirstName}" Width="*" />
-                            <DataGridTextColumn Header="Прізвище" Binding="{Binding Path=MiddleName}" Width="*" />
-                            <DataGridTextColumn Header="По батькові" Binding="{Binding Path=LastName}" Width="*" />
+                            <DataGridTextColumn Header="По батькові" Binding="{Binding Path=MiddleName}" Width="*" />
                             <DataGridTextColumn Header="Дата народження" Width="*" >
                                 <DataGridTextColumn.Binding>
                                     <Binding Path="BirthdayDate">
