@@ -17,6 +17,7 @@ using CsvHelper;
 using System.IO;
 using SE2.CourseWork.Models;
 using SE2.CourseWork.Generators;
+using System.Collections.ObjectModel;
 
 namespace SE2.CourseWork
 {
@@ -28,6 +29,7 @@ namespace SE2.CourseWork
         public MainWindow()
         {
             InitializeComponent();
+            GroupTable.ItemsSource = GroupsContainer.Groups;
         }
 
         private void ReadPersons(object sender, RoutedEventArgs e)
@@ -96,7 +98,14 @@ namespace SE2.CourseWork
                 {
                     reader.Configuration.RegisterClassMap<GroupClassMap>();
                     List<Group> groups = new List<Group>(reader.GetRecords<Group>());
-                    GroupTable.ItemsSource = groups;
+                    foreach(Group group in groups)
+                    {
+                        if(GroupsContainer.Groups.Select((g) => g.SpecialityFullName.Equals(group.SpecialityFullName) && g.GroupName.Equals(group.GroupName)).Count() == 0)
+                        {
+                            GroupsContainer.Groups.Add(group);
+                        }
+                    }
+                    GroupTable.ItemsSource = GroupsContainer.Groups;
                 }
             }
         }

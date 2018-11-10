@@ -7,7 +7,7 @@
         xmlns:Models="clr-namespace:SE2.CourseWork.Models;assembly=Models"
         x:Class="SE2.CourseWork.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="485" Width="896">
     <Grid>
         <TabControl>
             <TabItem Header="Persons">
