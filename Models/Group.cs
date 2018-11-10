@@ -11,14 +11,15 @@ namespace SE2.CourseWork.Models
     public class Group
     {
         private List<Student> _students;
+        private Professor _curator;
         public int NumberOfStudents { get => _students.Count; }
         public string Speciality { get; set; }
         public string SpecialityFullName { get; set; }
         public int Course { get; set; }
         public int Number { get; set; }
-        public Professor Curator { get; set; }
+        public Professor Curator { get => _curator; set { if (_curator != null) _curator.Group = null; _curator = value; } }
         public string GroupName { get => Speciality + Course + Number; }
-        public string CuratorsName() => Curator?.FullName() ?? "";
+        public string CuratorsName { get => Curator?.FullName(); }
         public List<Student> Students { get => _students.ToList(); }
         public Group()
         {

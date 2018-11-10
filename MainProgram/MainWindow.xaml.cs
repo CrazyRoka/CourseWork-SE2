@@ -57,6 +57,14 @@ namespace SE2.CourseWork
                 readGroupsData(openFileDialog.FileName);
             }
         }
+        private void ReadProfessors(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                readProfessorsData(openFileDialog.FileName);
+            }
+        }
 
         private void readStudentData(string fileName)
         {
@@ -71,6 +79,26 @@ namespace SE2.CourseWork
                     students.Add(current);
                 }
                 StudentTable.ItemsSource = students;
+            }
+            finally
+            {
+                file.Close();
+            }
+        }
+
+        private void readProfessorsData(string fileName)
+        {
+            StreamReader file = new StreamReader(fileName);
+            try
+            {
+                List<Professor> professors = new List<Professor>();
+                while (!file.EndOfStream)
+                {
+                    Professor current = new Professor();
+                    file -= current;
+                    professors.Add(current);
+                }
+                ProfessorTable.ItemsSource = professors;
             }
             finally
             {

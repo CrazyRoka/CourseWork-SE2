@@ -7,7 +7,7 @@
         xmlns:Models="clr-namespace:SE2.CourseWork.Models;assembly=Models"
         x:Class="SE2.CourseWork.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="485" Width="896">
+        Title="MainWindow" Height="503.925" Width="1163.66">
     <Grid>
         <TabControl>
             <TabItem Header="Persons">
@@ -63,7 +63,30 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Professors">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="ProfessorTable" AutoGenerateColumns="False" HorizontalGridLinesBrush="DarkGray"
+                              RowBackground="LightGray" AlternatingRowBackground="White"  Cursor="Arrow"
+                              CanUserDeleteRows="False" CanUserAddRows="False" Margin="0,0,0,50">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Ім'я" Binding="{Binding Path=FirstName}" Width="*" />
+                            <DataGridTextColumn Header="Прізвище" Binding="{Binding Path=MiddleName}" Width="*" />
+                            <DataGridTextColumn Header="По батькові" Binding="{Binding Path=LastName}" Width="*" />
+                            <DataGridTextColumn Header="Дата народження" Width="*" >
+                                <DataGridTextColumn.Binding>
+                                    <Binding Path="BirthdayDate">
+                                        <Binding.ValidationRules>
+                                            <local:DateValidationRule />
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Номер телефону" Binding="{Binding Path=PhoneNumber}" Width="*" />
+                            <DataGridTextColumn Header="Дисципліни, які викладає" Binding="{Binding Path=SubjectList}" IsReadOnly="True" Width="400" />
+                            <DataGridTextColumn Header="Куратор групи" Binding="{Binding Path=GroupName}" Width="*" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Content="Read Students from file" Margin="13,0,0,10" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="150" Click="ReadProfessors"/>
+                </Grid>
             </TabItem>
             <TabItem Header="Groups">
                 <Grid Background="#FFE5E5E5">

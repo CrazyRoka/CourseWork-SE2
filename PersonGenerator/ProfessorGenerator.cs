@@ -48,15 +48,15 @@ namespace SE2.CourseWork.Generators
         }
         protected static DateTime RandomDay()
         {
-            DateTime start = new DateTime(1990, 1, 1);
-            DateTime end = new DateTime(2002, 1, 1);
+            DateTime start = new DateTime(1950, 1, 1);
+            DateTime end = new DateTime(1990, 1, 1);
             int range = (end - start).Days;
             return start.AddDays(random.Next(range));
         }
         protected static Group RandomGroup()
         {
             string speciality = Specialities[random.Next(Specialities.Length - 1)];
-            return new Group(speciality,  fullName[speciality], random.Next(1, 7), random.Next(1, 15), null);
+            return new Group(speciality,  fullName[speciality], random.Next(1, 7), random.Next(1, 6), null);
         }
         protected static string RandomNumber()
         {

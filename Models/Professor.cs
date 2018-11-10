@@ -10,8 +10,9 @@ namespace SE2.CourseWork.Models
     public class Professor : Person
     {
         public string[] Subjects { get; set; }
+        public string SubjectList { get => string.Join(", ", Subjects); }
         public Group Group { get; set; }
-        public string GroupName { get => Group.GroupName; set => Group = GroupsContainer.FindOrCreateGroup(value, Speciality); }
+        public string GroupName { get => Group?.GroupName; set => Group = GroupsContainer.FindOrCreateGroup(value, Speciality); }
         public string Speciality { get => Group.SpecialityFullName; set => Group.SpecialityFullName = value; }
         public Professor() : base()
         {
@@ -30,7 +31,7 @@ namespace SE2.CourseWork.Models
         {
             writer.WriteLine($"{professor.FirstName},{professor.MiddleName}" +
                 $",{professor.LastName},{professor.BirthdayDate},{professor.PhoneNumber}," +
-                $"{professor.GroupName},{professor.Speciality},[{string.Join(";", professor.Subjects)}]");
+                $"{professor.GroupName},{professor.Speciality},{string.Join(";", professor.Subjects)}");
             return writer;
         }
         public static StreamReader operator -(StreamReader reader, Professor professor)
@@ -44,7 +45,7 @@ namespace SE2.CourseWork.Models
             string[] parts = line.Split(',');
             professor.FirstName = parts[0]; professor.MiddleName = parts[1]; professor.LastName = parts[2]; professor.BirthdayDate = parts[3];
             professor.PhoneNumber = parts[4]; professor.Group = GroupsContainer.FindOrCreateGroup(parts[5], parts[6]);
-            professor.Subjects = parts[7].Substring(1, parts.Length - 2).Split(';');
+            professor.Subjects = parts[7].Split(';');
             professor.Group.Curator = professor;
             return reader;
         }

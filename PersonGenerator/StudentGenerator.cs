@@ -54,7 +54,7 @@ namespace SE2.CourseWork.Generators
         protected static Group RandomGroup()
         {
             string speciality = Specialities[random.Next(Specialities.Length - 1)];
-            return new Group(speciality,  fullName[speciality], random.Next(1, 7), random.Next(1, 15), null);
+            return new Group(speciality,  fullName[speciality], random.Next(1, 7), random.Next(1, 6), null);
         }
         protected static string RandomNumber()
         {
