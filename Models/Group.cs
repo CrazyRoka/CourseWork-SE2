@@ -33,7 +33,7 @@ namespace SE2.CourseWork.Models
         }
         public Group(string groupName)
         {
-            Regex regex = new Regex(@"\A([A-Z]+)([1-6])([0-9]+)\z");
+            Regex regex = new Regex(@"\A(\p{Lu}+)([1-6])([0-9]+)\z");
             if (regex.IsMatch(groupName)){
                 Match match = regex.Match(groupName);
                 Speciality = match.Groups[1].Value;

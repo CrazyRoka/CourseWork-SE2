@@ -13,7 +13,7 @@ namespace SE2.CourseWork.Generators
     public class StudentGenerator
     {
         private static Random random = new Random();
-        private static readonly string[] Specialities = { "SE", "CS", "DB", "IOT" };
+        private static readonly string[] Specialities = { "ПЗ", "КН", "БД", "ІР", "КІ", "СА" };
         public static void GenerateData() => GenerateData("student.dat");
         public static void GenerateData(string fileName) => GenerateData(random.Next(5, 100), fileName);
         public static void GenerateData(int numberOfItems) => GenerateData(numberOfItems, "student.dat");
@@ -42,7 +42,7 @@ namespace SE2.CourseWork.Generators
                 .With(student => student.LastName = Faker.Name.Last())
                 .With(student => student.PhoneNumber = RandomNumber())
                 .With(student => student.BirthdayDate = RandomDay().ToString())
-                .With(student => student.AverageScore = (decimal) random.NextDouble() * 100)
+                .With(student => student.AverageScore = decimal.Round((decimal) random.NextDouble() * 100, 2))
                 .With(student => student.Group = RandomGroup())
                 .Build();
         }
@@ -55,7 +55,7 @@ namespace SE2.CourseWork.Generators
         }
         protected static Group RandomGroup()
         {
-            return new Group(Specialities[random.Next(Specialities.Length - 1)], random.Next(1, 7), random.Next(1, 6), null);
+            return new Group(Specialities[random.Next(Specialities.Length - 1)], random.Next(1, 7), random.Next(1, 15), null);
         }
         protected static string RandomNumber()
         {

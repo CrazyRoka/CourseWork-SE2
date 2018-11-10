@@ -53,6 +53,10 @@
                                 </DataGridTextColumn.Binding>
                             </DataGridTextColumn>
                             <DataGridTextColumn Header="Номер телефону" Binding="{Binding Path=PhoneNumber}" Width="*" />
+                            <DataGridTextColumn Header="Курс" Binding="{Binding Path=Course}" IsReadOnly="True" Width="*" />
+                            <DataGridTextColumn Header="Група" Binding="{Binding Path=GroupName}" IsReadOnly="True" Width="*" />
+                            <DataGridTextColumn Header="Кафедра" Binding="{Binding Path=Speciality}" IsReadOnly="True" Width="*" />
+                            <DataGridTextColumn Header="Середній бал" Binding="{Binding Path=AverageScore}" Width="*" />
                         </DataGrid.Columns>
                     </DataGrid>
                     <Button Content="Read Students from file" Margin="13,0,0,10" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="150" Click="ReadStudents"/>
