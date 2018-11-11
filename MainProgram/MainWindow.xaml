@@ -66,6 +66,16 @@
                     <RadioButton x:Name="FindByAverageScore1" Content="Середнім балом" HorizontalAlignment="Left" Margin="194,0,0,73" VerticalAlignment="Bottom"/>
                     <TextBox x:Name="FindTextBox" HorizontalAlignment="Left" Height="23" Margin="10,0,0,45" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="293" ToolTip="Введіть шукане значення тут"/>
                     <Button x:Name="FindButton" Content="Знайти студента(ів)" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="293" Height="30" Click="FindButtonClick" />
+                    <Button x:Name="FindWorstStudent" Content="Знайти студента з мінімальним середнім балом" HorizontalAlignment="Left" Margin="435,0,0,10" VerticalAlignment="Bottom" Width="300" Height="30" Click="FindLowestMarkButtonClick"/>
+                    <Label Content="Заданий курс:" HorizontalAlignment="Left" Margin="435,0,0,73" VerticalAlignment="Bottom"/>
+                    <ComboBox x:Name="CourseNumber" HorizontalAlignment="Left" Margin="526,0,0,73" VerticalAlignment="Bottom" Width="209" SelectedIndex="0">
+                        <ComboBoxItem Content="1"/>
+                        <ComboBoxItem Content="2"/>
+                        <ComboBoxItem Content="3"/>
+                        <ComboBoxItem Content="4"/>
+                        <ComboBoxItem Content="5"/>
+                        <ComboBoxItem Content="6"/>
+                    </ComboBox>
                 </Grid>
             </TabItem>
             <TabItem Header="Викладачі">

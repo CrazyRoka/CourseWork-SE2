@@ -31,6 +31,37 @@ namespace SE2.CourseWork
             InitializeComponent();
             GroupTable.ItemsSource = GroupsContainer.Groups;
         }
+        private void FindLowestMarkButtonClick(object sender, RoutedEventArgs e)
+        {
+            string answer;
+            int course = int.Parse(CourseNumber.Text);
+            IEnumerable<Student> students = (IEnumerable<Student>)StudentTable.ItemsSource;
+            if(students == null)
+            {
+                answer = "Завантажте дані про студентів";
+            }
+            else
+            {
+                students = students.Where(student => student.Course == course);
+                if(students.Count() == 0)
+                {
+                    answer = "Не існує жодного студента на заданому кусрі";
+                }
+                else
+                {
+                    Student worstStudent = students.First();
+                    foreach (Student current in students)
+                    {
+                        if (current.AverageScore < worstStudent.AverageScore)
+                        {
+                            worstStudent = current;
+                        }
+                    }
+                    answer = worstStudent.ToString();
+                }
+            }
+            MessageBox.Show(answer, "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
         private void FindBestMarkButtonClick(object sender, RoutedEventArgs e)
         {
             string answer;
