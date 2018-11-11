@@ -29,7 +29,24 @@ namespace SE2.CourseWork
         public MainWindow()
         {
             InitializeComponent();
+            PersonTable.ItemsSource = new List<Person>();
+            StudentTable.ItemsSource = new List<Student>();
+            ProfessorTable.ItemsSource = new List<Professor>();
             GroupTable.ItemsSource = GroupsContainer.Groups;
+        }
+        private void AddPersonClick(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            string content = (string)button.Content;
+            int val = int.Parse(content);
+            List<Person> list = (List<Person>)PersonTable.ItemsSource;
+            while(val > 0)
+            {
+                val--;
+                list.Add(new Person());
+            }
+            PersonTable.ItemsSource = null;
+            PersonTable.ItemsSource = list;
         }
         private void FindSameBirthdayButtonClick(object sender, RoutedEventArgs e)
         {
@@ -276,6 +293,7 @@ namespace SE2.CourseWork
                 using (CsvReader reader = new CsvReader(file))
                 {
                     List<Person> persons = new List<Person>(reader.GetRecords<Person>());
+                    PersonTable.ItemsSource = null;
                     PersonTable.ItemsSource = persons;
                 }
             }
