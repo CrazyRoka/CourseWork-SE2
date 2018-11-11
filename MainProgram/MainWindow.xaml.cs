@@ -31,6 +31,36 @@ namespace SE2.CourseWork
             InitializeComponent();
             GroupTable.ItemsSource = GroupsContainer.Groups;
         }
+        private void FindSameBirthdayButtonClick(object sender, RoutedEventArgs e)
+        {
+            IEnumerable<Student> students = (IEnumerable<Student>)StudentTable.ItemsSource;
+            IEnumerable<Professor> professors = (IEnumerable<Professor>)ProfessorTable.ItemsSource;
+            if(students == null)
+            {
+                MessageBox.Show("Введіть дані про студентів", "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else if(professors == null)
+            {
+                MessageBox.Show("Введіть дані про викладачів", "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                foreach(Professor professor in professors)
+                {
+                    if(professor.Group != null)
+                    {
+                        var selectedStudents = students.Where(student => student.Group == professor.Group 
+                            && student.BirthdayDate.Substring(5).Equals(professor.BirthdayDate.Substring(5)));
+                        if(selectedStudents.Count() != 0)
+                        {
+                            string answer = $"Викладач:\n{professor.ToString()}\nСтуденти:\n";
+                            answer += string.Join("\n", selectedStudents);
+                            MessageBox.Show(answer, "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                    }
+                }
+            }
+        }
         private void FindLowestMarkButtonClick(object sender, RoutedEventArgs e)
         {
             string answer;
@@ -38,7 +68,7 @@ namespace SE2.CourseWork
             IEnumerable<Student> students = (IEnumerable<Student>)StudentTable.ItemsSource;
             if(students == null)
             {
-                answer = "Завантажте дані про студентів";
+                answer = "Введіть дані про студентів";
             }
             else
             {
@@ -104,7 +134,7 @@ namespace SE2.CourseWork
                     }
                     else
                     {
-                        answer = "Завантажте дані про студентів.";
+                        answer = "Введіть дані про студентів.";
                     }
                 }
             }
