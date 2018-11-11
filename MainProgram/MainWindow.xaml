@@ -6,20 +6,22 @@
         xmlns:local="clr-namespace:SE2.CourseWork"
         xmlns:Models="clr-namespace:SE2.CourseWork.Models;assembly=Models"
         x:Class="SE2.CourseWork.MainWindow"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="633.7" Width="1163.66">
+        Title="MainWindow" Height="633.7" Width="1163.66"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}">
     <Grid>
         <TabControl>
             <TabItem Header="Персони">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="PersonTable" AutoGenerateColumns="False" HorizontalGridLinesBrush="DarkGray"
-                              RowBackground="LightGray" AlternatingRowBackground="White"  Cursor="Arrow"
+                    <DataGrid x:Name="PersonTable" AutoGenerateColumns="False"
                               CanUserDeleteRows="False" CanUserAddRows="False" Margin="0,0,0,50">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Прізвище" Binding="{Binding Path=LastName}" Width="*" />
-                            <DataGridTextColumn Header="Ім'я" Binding="{Binding Path=FirstName}" Width="*" />
-                            <DataGridTextColumn Header="По батькові" Binding="{Binding Path=MiddleName}" Width="*" />
-                            <DataGridTextColumn Header="Дата народження" Width="*" >
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Прізвище" Binding="{Binding Path=LastName}" Width="*" />
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Ім'я" Binding="{Binding Path=FirstName}" Width="*" />
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="По батькові" Binding="{Binding Path=MiddleName}" Width="*" />
+                            <DataGridTextColumn EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" Header="Дата народження" Width="*" >
                                 <DataGridTextColumn.Binding>
                                     <Binding Path="BirthdayDate">
                                         <Binding.ValidationRules>
@@ -28,7 +30,7 @@
                                     </Binding>
                                 </DataGridTextColumn.Binding>
                             </DataGridTextColumn>
-                            <DataGridTextColumn Header="Номер телефону" Binding="{Binding Path=PhoneNumber}" Width="*" />
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Номер телефону" Binding="{Binding Path=PhoneNumber}" Width="*" />
                         </DataGrid.Columns>
                     </DataGrid>
                     <Button Content="Зчитати дані про персон" Margin="13,0,0,10" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="150" Click="ReadPersons"/>
@@ -36,14 +38,13 @@
             </TabItem>
             <TabItem Header="Студенти">
                 <Grid x:Name="FindByAverageScore" Background="#FFE5E5E5" ToolTip="Введіть шукане значення тут">
-                    <DataGrid x:Name="StudentTable" AutoGenerateColumns="False" HorizontalGridLinesBrush="DarkGray"
-                              RowBackground="LightGray" AlternatingRowBackground="White"  Cursor="Arrow"
+                    <DataGrid x:Name="StudentTable" AutoGenerateColumns="False"
                               CanUserDeleteRows="False" CanUserAddRows="False" Margin="0,0,0,164">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Прізвище" Binding="{Binding Path=LastName}" Width="*" />
-                            <DataGridTextColumn Header="Ім'я" Binding="{Binding Path=FirstName}" Width="*" />
-                            <DataGridTextColumn Header="По батькові" Binding="{Binding Path=MiddleName}" Width="*" />
-                            <DataGridTextColumn Header="Дата народження" Width="*" >
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Прізвище" Binding="{Binding Path=LastName}" Width="*" />
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Ім'я" Binding="{Binding Path=FirstName}" Width="*" />
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="По батькові" Binding="{Binding Path=MiddleName}" Width="*" />
+                            <DataGridTextColumn EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" Header="Дата народження" Width="*" >
                                 <DataGridTextColumn.Binding>
                                     <Binding Path="BirthdayDate">
                                         <Binding.ValidationRules>
@@ -52,11 +53,11 @@
                                     </Binding>
                                 </DataGridTextColumn.Binding>
                             </DataGridTextColumn>
-                            <DataGridTextColumn Header="Номер телефону" Binding="{Binding Path=PhoneNumber}" Width="*" />
-                            <DataGridTextColumn Header="Курс" Binding="{Binding Path=Course}" IsReadOnly="True" Width="50" />
-                            <DataGridTextColumn Header="Група" Binding="{Binding Path=GroupName}" Width="*" />
-                            <DataGridTextColumn Header="Кафедра" Binding="{Binding Path=Speciality}" Width="150" />
-                            <DataGridTextColumn Header="Середній бал" Binding="{Binding Path=AverageScore}" Width="*" />
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Номер телефону" Binding="{Binding Path=PhoneNumber}" Width="*" />
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Курс" Binding="{Binding Path=Course}" IsReadOnly="True" Width="50" />
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Група" Binding="{Binding Path=GroupName}" Width="*" />
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Кафедра" Binding="{Binding Path=Speciality}" Width="150" />
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Середній бал" Binding="{Binding Path=AverageScore}" Width="*" />
                         </DataGrid.Columns>
                     </DataGrid>
                     <Button Content="Зчитати дані про студентів" Margin="10,0,0,124" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="163" Click="ReadStudents"/>
@@ -81,14 +82,13 @@
             </TabItem>
             <TabItem Header="Викладачі">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="ProfessorTable" AutoGenerateColumns="False" HorizontalGridLinesBrush="DarkGray"
-                              RowBackground="LightGray" AlternatingRowBackground="White"  Cursor="Arrow"
+                    <DataGrid x:Name="ProfessorTable" AutoGenerateColumns="False"
                               CanUserDeleteRows="False" CanUserAddRows="False" Margin="0,0,0,50">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Прізвище" Binding="{Binding Path=LastName}" Width="*" />
-                            <DataGridTextColumn Header="Ім'я" Binding="{Binding Path=FirstName}" Width="*" />
-                            <DataGridTextColumn Header="По батькові" Binding="{Binding Path=MiddleName}" Width="*" />
-                            <DataGridTextColumn Header="Дата народження" Width="*" >
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Прізвище" Binding="{Binding Path=LastName}" Width="*" />
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Ім'я" Binding="{Binding Path=FirstName}" Width="*" />
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="По батькові" Binding="{Binding Path=MiddleName}" Width="*" />
+                            <DataGridTextColumn EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" Header="Дата народження" Width="*" >
                                 <DataGridTextColumn.Binding>
                                     <Binding Path="BirthdayDate">
                                         <Binding.ValidationRules>
@@ -97,9 +97,9 @@
                                     </Binding>
                                 </DataGridTextColumn.Binding>
                             </DataGridTextColumn>
-                            <DataGridTextColumn Header="Номер телефону" Binding="{Binding Path=PhoneNumber}" Width="*" />
-                            <DataGridTextColumn Header="Дисципліни, які викладає" Binding="{Binding Path=SubjectList}" IsReadOnly="True" Width="400" />
-                            <DataGridTextColumn Header="Куратор групи" Binding="{Binding Path=GroupName}" Width="*" />
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Номер телефону" Binding="{Binding Path=PhoneNumber}" Width="*" />
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Дисципліни, які викладає" Binding="{Binding Path=SubjectList}" IsReadOnly="True" Width="400" />
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Куратор групи" Binding="{Binding Path=GroupName}" Width="*" />
                         </DataGrid.Columns>
                     </DataGrid>
                     <Button Content="Зчитати дані про викладачів з файлу" Margin="13,0,0,10" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="164" Click="ReadProfessors"/>
@@ -108,17 +108,16 @@
             </TabItem>
             <TabItem Header="Групи">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="GroupTable" AutoGenerateColumns="False" HorizontalGridLinesBrush="DarkGray"
-                              RowBackground="LightGray" AlternatingRowBackground="White"  Cursor="Arrow"
+                    <DataGrid x:Name="GroupTable" AutoGenerateColumns="False"
                               CanUserDeleteRows="False" CanUserAddRows="False" Margin="0,0,0,50">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Група" Binding="{Binding Path=GroupName}" IsReadOnly="True" Width="*" />
-                            <DataGridTextColumn Header="Спеціальність" Binding="{Binding Path=Speciality}" Width="*" />
-                            <DataGridTextColumn Header="Кафедра" Binding="{Binding Path=SpecialityFullName}" Width="*" />
-                            <DataGridTextColumn Header="Курс" Binding="{Binding Path=Course}" Width="*" />
-                            <DataGridTextColumn Header="Номер групи" Binding="{Binding Path=Number}" Width="*" />
-                            <DataGridTextColumn Header="Кількість студентів" Binding="{Binding Path=NumberOfStudents}" IsReadOnly="True" Width="*" />
-                            <DataGridTextColumn Header="Куратор" Binding="{Binding Path=CuratorsName}" IsReadOnly="True" Width="*" />
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Група" Binding="{Binding Path=GroupName}" IsReadOnly="True" Width="*" />
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Спеціальність" Binding="{Binding Path=Speciality}" Width="*" />
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Кафедра" Binding="{Binding Path=SpecialityFullName}" Width="*" />
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Курс" Binding="{Binding Path=Course}" Width="*" />
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Номер групи" Binding="{Binding Path=Number}" Width="*" />
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Кількість студентів" Binding="{Binding Path=NumberOfStudents}" IsReadOnly="True" Width="*" />
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Куратор" Binding="{Binding Path=CuratorsName}" IsReadOnly="True" Width="*" />
                         </DataGrid.Columns>
                     </DataGrid>
                     <Button Content="Зчитати дані про групи" Margin="13,0,0,10" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="150" Click="ReadGroups"/>
