@@ -144,10 +144,14 @@ namespace SE2.CourseWork
         {
             string text = FindTextBox.Text;
             string answer;
-            if (FindByLastName.IsChecked == true)
+            if(StudentTable.ItemsSource == null)
+            {
+                answer = "Введіть дані про студентів";
+            }
+            else if (FindByLastName.IsChecked == true)
             {
                 IEnumerable<Student> students = (IEnumerable<Student>)StudentTable.ItemsSource;
-                students = students.Where(student => student.LastName.Equals(text));
+                students = students.Where(student => string.Equals(student.LastName, text));
                 if (students.Count() == 0) answer = "Не знайдено такого студента";
                 else
                 {
@@ -156,7 +160,7 @@ namespace SE2.CourseWork
             }else if (FindByGroup.IsChecked == true)
             {
                 IEnumerable<Student> students = (IEnumerable<Student>)StudentTable.ItemsSource;
-                students = students.Where(student => student.GroupName.Equals(text));
+                students = students.Where(student => string.Equals(student.GroupName, text));
                 if (students.Count() == 0) answer = "Не знайдено такого студента";
                 else
                 {
@@ -168,7 +172,7 @@ namespace SE2.CourseWork
                 try
                 {
                     IEnumerable<Student> students = (IEnumerable<Student>)StudentTable.ItemsSource;
-                    students = students.Where(student => student.AverageScore.Equals(decimal.Parse(text.Replace(',','.'))));
+                    students = students.Where(student => decimal.Equals(student.AverageScore, decimal.Parse(text.Replace(',','.'))));
                     if (students.Count() == 0) answer = "Не знайдено такого студента";
                     else
                     {

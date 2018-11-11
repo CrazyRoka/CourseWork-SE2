@@ -9,7 +9,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
         mc:Ignorable="d"
-        Title="MainWindow" Height="633.7" Width="1163.66"
+        Title="MainWindow" Height="694.9" Width="1156.46"
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}">
     <dragablz:TabablzControl>
@@ -36,13 +36,13 @@
                         <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Номер телефону" Binding="{Binding Path=PhoneNumber}" Width="*" />
                     </DataGrid.Columns>
                 </DataGrid>
-                <Button Content="Зчитати дані про персон" Margin="13,0,0,10" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="150" Click="ReadPersons"/>
+                <Button Content="Зчитати дані про персон" Margin="13,0,0,10" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="250" Click="ReadPersons"/>
             </Grid>
         </TabItem>
         <TabItem Header="Студенти">
             <Grid x:Name="FindByAverageScore" Background="#FFE5E5E5" ToolTip="Введіть шукане значення тут">
                 <DataGrid x:Name="StudentTable" AutoGenerateColumns="False"
-                            CanUserDeleteRows="False" CanUserAddRows="False" Margin="0,0,0,164">
+                            CanUserDeleteRows="False" CanUserAddRows="False" Margin="0,0,0,200">
                     <DataGrid.Columns>
                         <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Прізвище" Binding="{Binding Path=LastName}" Width="*" />
                         <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Ім'я" Binding="{Binding Path=FirstName}" Width="*" />
@@ -57,30 +57,33 @@
                             </DataGridTextColumn.Binding>
                         </DataGridTextColumn>
                         <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Номер телефону" Binding="{Binding Path=PhoneNumber}" Width="*" />
-                        <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Курс" Binding="{Binding Path=Course}" IsReadOnly="True" Width="50" />
+                        <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Курс" Binding="{Binding Path=Course}" IsReadOnly="True" Width="70" />
                         <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Група" Binding="{Binding Path=GroupName}" Width="*" />
                         <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Кафедра" Binding="{Binding Path=Speciality}" Width="150" />
                         <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Середній бал" Binding="{Binding Path=AverageScore}" Width="*" />
                     </DataGrid.Columns>
                 </DataGrid>
-                <Button Content="Зчитати дані про студентів" Margin="10,0,0,124" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="163" Click="ReadStudents"/>
-                <Label Content="Пошук студента за:" HorizontalAlignment="Left" Margin="10,0,0,93" VerticalAlignment="Bottom"/>
-                <RadioButton x:Name="FindByLastName" Content="Прізвищем" HorizontalAlignment="Left" Margin="10,0,0,73" VerticalAlignment="Bottom" IsChecked="True"/>
-                <RadioButton x:Name="FindByGroup" Content="Групою" HorizontalAlignment="Left" Margin="112,0,0,73" VerticalAlignment="Bottom"/>
-                <RadioButton x:Name="FindByAverageScore1" Content="Середнім балом" HorizontalAlignment="Left" Margin="194,0,0,73" VerticalAlignment="Bottom"/>
-                <TextBox x:Name="FindTextBox" HorizontalAlignment="Left" Height="23" Margin="10,0,0,45" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="293" ToolTip="Введіть шукане значення тут"/>
-                <Button x:Name="FindButton" Content="Знайти студента(ів)" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="293" Height="30" Click="FindButtonClick" />
-                <Button x:Name="FindWorstStudent" Content="Знайти студента з мінімальним середнім балом" HorizontalAlignment="Left" Margin="352,0,0,10" VerticalAlignment="Bottom" Width="300" Height="30" Click="FindLowestMarkButtonClick"/>
-                <Label Content="Заданий курс:" HorizontalAlignment="Left" Margin="352,0,0,65" VerticalAlignment="Bottom"/>
-                <ComboBox x:Name="CourseNumber" HorizontalAlignment="Left" Margin="443,0,0,66" VerticalAlignment="Bottom" Width="209" SelectedIndex="0">
-                    <ComboBoxItem Content="1"/>
-                    <ComboBoxItem Content="2"/>
-                    <ComboBoxItem Content="3"/>
-                    <ComboBoxItem Content="4"/>
-                    <ComboBoxItem Content="5"/>
-                    <ComboBoxItem Content="6"/>
+                <Button Content="Зчитати дані про студентів" Margin="10,0,0,150" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="350" Click="ReadStudents" />
+                <Label Content="Пошук студента за:" HorizontalAlignment="Left" Margin="10,0,0,125" VerticalAlignment="Bottom"/>
+                <materialDesign:ColorZone Mode="PrimaryMid" HorizontalAlignment="Left" Margin="10,0,0,85" VerticalAlignment="Bottom">
+                    <StackPanel Orientation="Horizontal">
+                        <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" IsChecked="True" x:Name="FindByLastName" Content="Прізвищем" HorizontalAlignment="Left" />
+                        <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" IsChecked="False" x:Name="FindByGroup" Content="Групою" HorizontalAlignment="Left" />
+                        <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" IsChecked="False" x:Name="FindByAverageScore1" Content="Середнім балом" HorizontalAlignment="Left" />
+                    </StackPanel>
+                </materialDesign:ColorZone>
+                <TextBox x:Name="FindTextBox"  materialDesign:HintAssist.Hint="Шукане значення" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,0,45" Width="350" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                <Button x:Name="FindButton" Content="Знайти студента(ів)" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="350" Height="30" Click="FindButtonClick" />
+                <Button x:Name="FindWorstStudent" Content="Знайти найгіршого студента на курсі" HorizontalAlignment="Left" Margin="400,0,0,10" VerticalAlignment="Bottom" Width="300" Height="30" Click="FindLowestMarkButtonClick"/>
+                <ComboBox x:Name="CourseNumber" HorizontalAlignment="Left" Margin="400,0,0,85" VerticalAlignment="Bottom" Width="300" SelectedIndex="0" materialDesign:HintAssist.Hint="Заданий курс" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                    <ComboBoxItem>1</ComboBoxItem>
+                    <ComboBoxItem>2</ComboBoxItem>
+                    <ComboBoxItem>3</ComboBoxItem>
+                    <ComboBoxItem>4</ComboBoxItem>
+                    <ComboBoxItem>5</ComboBoxItem>
+                    <ComboBoxItem>6</ComboBoxItem>
                 </ComboBox>
-                <Button x:Name="FindSameBirthday" Content="Вивести студентів з однаковим днем&#xD;&#xA;народження з куратором" HorizontalAlignment="Left" Margin="700,487,0,0" VerticalAlignment="Top" Width="217" Height="78" Click="FindSameBirthdayButtonClick"/>
+                <Button x:Name="FindSameBirthday" Content="Вивести студентів з однаковим днем&#x0a;народження з куратором" HorizontalAlignment="Left" Margin="750,0,0,10" VerticalAlignment="Bottom" Width="350" Height="80" Click="FindSameBirthdayButtonClick"/>
             </Grid>
         </TabItem>
         <TabItem Header="Викладачі">
