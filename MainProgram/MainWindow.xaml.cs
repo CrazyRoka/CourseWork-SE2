@@ -50,7 +50,7 @@ namespace SE2.CourseWork
                     if(professor.Group != null)
                     {
                         var selectedStudents = students.Where(student => student.Group == professor.Group 
-                            && student.BirthdayDate.Substring(5).Equals(professor.BirthdayDate.Substring(5)));
+                            && string.Equals(student.BirthdayDate.Substring(5), professor.BirthdayDate.Substring(5)));
                         if(selectedStudents.Count() != 0)
                         {
                             string answer = $"Викладач:\n{professor.ToString()}\nСтуденти:\n";
