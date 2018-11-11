@@ -10,9 +10,9 @@ namespace SE2.CourseWork.Generators
     {
         static void Main(string[] args)
         {
-            PersonGenerator.GenerateData(1000);
-            StudentGenerator.GenerateData(1000);
-            ProfessorGenerator.GenerateData(1000);
+            PersonGenerator.GenerateData(2000);
+            StudentGenerator.GenerateData(2000);
+            ProfessorGenerator.GenerateData(2000);
             GroupGenerator.GenerateData(10);
         }
     }

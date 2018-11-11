@@ -31,7 +31,7 @@
                             <DataGridTextColumn Header="Номер телефону" Binding="{Binding Path=PhoneNumber}" Width="*" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button Content="Read Persons from file" Margin="13,0,0,10" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="150" Click="ReadPersons"/>
+                    <Button Content="Зчитати дані про персон" Margin="13,0,0,10" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="150" Click="ReadPersons"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Студенти">
@@ -59,7 +59,7 @@
                             <DataGridTextColumn Header="Середній бал" Binding="{Binding Path=AverageScore}" Width="*" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button Content="Read Students from file" Margin="10,0,0,124" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="150" Click="ReadStudents"/>
+                    <Button Content="Зчитати дані про студентів" Margin="10,0,0,124" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="163" Click="ReadStudents"/>
                     <Label Content="Пошук студента за:" HorizontalAlignment="Left" Margin="10,0,0,93" VerticalAlignment="Bottom"/>
                     <RadioButton x:Name="FindByLastName" Content="Прізвищем" HorizontalAlignment="Left" Margin="10,0,0,73" VerticalAlignment="Bottom" IsChecked="True"/>
                     <RadioButton x:Name="FindByGroup" Content="Групою" HorizontalAlignment="Left" Margin="112,0,0,73" VerticalAlignment="Bottom"/>
@@ -101,7 +101,7 @@
                             <DataGridTextColumn Header="Куратор групи" Binding="{Binding Path=GroupName}" Width="*" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button Content="Read Students from file" Margin="13,0,0,10" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="150" Click="ReadProfessors"/>
+                    <Button Content="Зчитати дані про викладачів з файлу" Margin="13,0,0,10" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="164" Click="ReadProfessors"/>
                     <Button Content="Button" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="144" Height="35" Click="FindBestMarkButtonClick"/>
                 </Grid>
             </TabItem>
@@ -120,7 +120,7 @@
                             <DataGridTextColumn Header="Куратор" Binding="{Binding Path=CuratorsName}" IsReadOnly="True" Width="*" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button Content="Read Groups from file" Margin="13,0,0,10" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="150" Click="ReadGroups"/>
+                    <Button Content="Зчитати дані про групи" Margin="13,0,0,10" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="150" Click="ReadGroups"/>
                 </Grid>
             </TabItem>
         </TabControl>
