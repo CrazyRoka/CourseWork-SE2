@@ -79,7 +79,11 @@ namespace SE2.CourseWork
             }
             else
             {
-                foreach (Professor professor in selected) professors.Remove(professor);
+                foreach (Professor professor in selected)
+                {
+                    professor.Group = null;
+                    professors.Remove(professor);
+                }
                 ProfessorTable.ItemsSource = null;
                 ProfessorTable.ItemsSource = professors;
                 MessageBox.Show("Записи про викладачів видалено", "Результат видалення", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -137,7 +141,12 @@ namespace SE2.CourseWork
             }
             else
             {
-                foreach (Student student in selected) students.Remove(student);
+                foreach (Student student in selected)
+                {
+                    student.Group.DeleteStudent(student);
+                    student.Group = null;
+                    students.Remove(student);
+                }
                 StudentTable.ItemsSource = null;
                 StudentTable.ItemsSource = students;
                 MessageBox.Show("Записи про студентів видалено", "Результат видалення", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -344,7 +353,7 @@ namespace SE2.CourseWork
                     answer = string.Join("\n", students);
                 }
             }
-            else if (FindByAverageScore1.IsChecked == true)
+            else
             {
                 try
                 {
@@ -365,11 +374,6 @@ namespace SE2.CourseWork
                     answer = "Введене число занадто велике (мале)";
                 }
             }
-            else
-            {
-                //TODO
-                throw new NotImplementedException();
-            }
             MessageBox.Show(answer, "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Information);
         }
         private void ReadPersons(object sender, RoutedEventArgs e)
@@ -386,15 +390,6 @@ namespace SE2.CourseWork
             if (openFileDialog.ShowDialog() == true)
             {
                 readStudentData(openFileDialog.FileName);
-            }
-        }
-
-        private void ReadGroups(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            if (openFileDialog.ShowDialog() == true)
-            {
-                readGroupsData(openFileDialog.FileName);
             }
         }
         private void ReadProfessors(object sender, RoutedEventArgs e)
@@ -419,7 +414,9 @@ namespace SE2.CourseWork
                     file -= current;
                     students.Add(current);
                 }
-                StudentTable.ItemsSource = students;
+                List<Student> previous = (List<Student>)StudentTable.ItemsSource;
+                StudentTable.ItemsSource = null;
+                StudentTable.ItemsSource = previous.Concat(students).ToList();
             }
             catch (Exception)
             {
@@ -450,7 +447,9 @@ namespace SE2.CourseWork
                     file -= current;
                     professors.Add(current);
                 }
-                ProfessorTable.ItemsSource = professors;
+                List<Professor> previous = (List<Professor>)ProfessorTable.ItemsSource;
+                ProfessorTable.ItemsSource = null;
+                ProfessorTable.ItemsSource = previous.Concat(professors).ToList();
             }
             catch (Exception)
             {
@@ -482,8 +481,9 @@ namespace SE2.CourseWork
                     file -= current;
                     persons.Add(current);
                 }
+                List<Person> previous = (List<Person>)PersonTable.ItemsSource;
                 PersonTable.ItemsSource = null;
-                PersonTable.ItemsSource = persons;
+                PersonTable.ItemsSource = previous.Concat(persons).ToList();
             }
             catch (Exception)
             {
@@ -498,26 +498,6 @@ namespace SE2.CourseWork
                 catch (Exception)
                 {
                     MessageBox.Show("Помилка закривання файлу", "Зчитування персон", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-            }
-        }
-
-        private void readGroupsData(string fileName)
-        {
-            using (StreamReader file = new StreamReader(fileName))
-            {
-                using (CsvReader reader = new CsvReader(file))
-                {
-                    reader.Configuration.RegisterClassMap<GroupClassMap>();
-                    List<Group> groups = new List<Group>(reader.GetRecords<Group>());
-                    foreach(Group group in groups)
-                    {
-                        if(GroupsContainer.Groups.Select((g) => g.SpecialityFullName.Equals(group.SpecialityFullName) && g.GroupName.Equals(group.GroupName)).Count() == 0)
-                        {
-                            GroupsContainer.Groups.Add(group);
-                        }
-                    }
-                    GroupTable.ItemsSource = GroupsContainer.Groups;
                 }
             }
         }

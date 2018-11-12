@@ -168,7 +168,7 @@
         <TabItem Header="Групи">
             <Grid Background="#FFE5E5E5">
                 <DataGrid x:Name="GroupTable" AutoGenerateColumns="False"
-                            CanUserDeleteRows="False" CanUserAddRows="False" Margin="0,0,0,50">
+                            CanUserDeleteRows="False" CanUserAddRows="False" Margin="0,0,0,0">
                     <DataGrid.Columns>
                         <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Група" Binding="{Binding Path=GroupName}" IsReadOnly="True" Width="*" />
                         <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Спеціальність" Binding="{Binding Path=Speciality}" Width="*" />
@@ -179,7 +179,6 @@
                         <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Куратор" Binding="{Binding Path=CuratorsName}" IsReadOnly="True" Width="*" />
                     </DataGrid.Columns>
                 </DataGrid>
-                <Button Content="Зчитати дані про групи" Margin="13,0,0,10" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="150" Click="ReadGroups"/>
             </Grid>
         </TabItem>
     </dragablz:TabablzControl>

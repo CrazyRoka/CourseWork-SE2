@@ -9,11 +9,27 @@ namespace SE2.CourseWork.Models
 {
     public class Professor : Person
     {
+        private Group _group;
         public string[] Subjects { get; set; }
         public string SubjectList { get => string.Join(", ", Subjects); }
-        public Group Group { get; set; }
         public string GroupName { get => Group?.GroupName; set => Group = GroupsContainer.FindOrCreateGroup(value, Speciality); }
-        public string Speciality { get => Group.SpecialityFullName; set => Group.SpecialityFullName = value; }
+        public string Speciality { get => Group?.SpecialityFullName ?? ""; set => Group.SpecialityFullName = value; }
+        public Group Group
+        {
+            get => _group;
+            set
+            {
+                if(_group != null) _group.Curator = null;
+                _group = value;
+                if(_group != null)
+                {
+                    Professor previousCurator = _group.Curator;
+                    if (previousCurator != null) previousCurator._group = null;
+                    _group.Curator = this;
+                }
+
+            }
+        }
         public Professor() : base()
         {
 
