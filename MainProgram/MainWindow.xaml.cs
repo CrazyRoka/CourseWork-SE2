@@ -34,23 +34,92 @@ namespace SE2.CourseWork
             ProfessorTable.ItemsSource = new List<Professor>();
             GroupTable.ItemsSource = GroupsContainer.Groups;
         }
+        private void SaveStudentsClick(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string fileName = openFileDialog.FileName;
+                StreamWriter writer = null;
+                try
+                {
+                    writer = new StreamWriter(fileName);
+                    List<Student> students = StudentTable.ItemsSource as List<Student>;
+                    foreach (Student student in students)
+                        writer += student;
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Помилка роботи з файлом!", "Результат збереження", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                finally
+                {
+                    try
+                    {
+                        writer?.Close();
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Помилка закриття файлу!", "Результат збереження", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                }
+            }
+        }
+        private void DeleteStudentsClick(object sender, RoutedEventArgs e)
+        {
+            var students = (List<Student>)StudentTable.ItemsSource;
+            var selected = StudentTable.SelectedItems;
+            if (students == null)
+            {
+                MessageBox.Show("Введіть дані про студентів", "Результат видалення", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else if (selected.Count == 0)
+            {
+                MessageBox.Show("Виберіть хоча б одного студента", "Результат видалення", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                foreach (Student student in selected) students.Remove(student);
+                StudentTable.ItemsSource = null;
+                StudentTable.ItemsSource = students;
+                MessageBox.Show("Записи про студентів видалено", "Результат видалення", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+        private void AddStudentClick(object sender, RoutedEventArgs e)
+        {
+            List<Student> list = (List<Student>)PersonTable.ItemsSource;
+            list.Add(new Student());
+            StudentTable.ItemsSource = null;
+            StudentTable.ItemsSource = list;
+        }
         private void SavePersonsClick(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
             {
                 string fileName = openFileDialog.FileName;
+                StreamWriter writer = null;
                 try
                 {
-                    StreamWriter writer = new StreamWriter(fileName);
+                    writer = new StreamWriter(fileName);
                     List<Person> persons = PersonTable.ItemsSource as List<Person>;
                     foreach (Person person in persons)
                         writer += person;
-                    writer.Close();
                 }
-                catch (IOException)
+                catch (Exception)
                 {
                     MessageBox.Show("Помилка роботи з файлом!", "Результат збереження", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                finally
+                {
+                    try
+                    {
+                        writer?.Close();
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Помилка закриття файлу!", "Результат збереження", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
                 }
             }
         }
@@ -76,15 +145,8 @@ namespace SE2.CourseWork
         }
         private void AddPersonClick(object sender, RoutedEventArgs e)
         {
-            Button button = (Button)sender;
-            string content = (string)button.Content;
-            int val = int.Parse(content);
             List<Person> list = (List<Person>)PersonTable.ItemsSource;
-            while(val > 0)
-            {
-                val--;
-                list.Add(new Person());
-            }
+            list.Add(new Person());
             PersonTable.ItemsSource = null;
             PersonTable.ItemsSource = list;
         }
