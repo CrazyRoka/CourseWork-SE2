@@ -42,7 +42,7 @@
                     </materialDesign:PopupBox.ToggleCheckedContent>
                     <StackPanel>
                         <Button ToolTip="Додати одну персону" Click="AddPersonClick" Content="1"/>
-                        <Button ToolTip="Зчитати персон" Click="ReadPersons" Content="2"/>
+                        <Button ToolTip="Зчитати дані про персон" Click="ReadPersons" Content="2"/>
                     </StackPanel>
                 </materialDesign:PopupBox>
                 <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}" ToolTip="Видалити записи" VerticalAlignment="Top" Margin="75,5,0,0" HorizontalAlignment="Left" Click="DeletePersonsClick">
@@ -83,7 +83,7 @@
                     </materialDesign:PopupBox.ToggleCheckedContent>
                     <StackPanel>
                         <Button ToolTip="Додати одного студента" Click="AddStudentClick" Content="1"/>
-                        <Button ToolTip="Зчитати студентів" Click="ReadStudents" Content="2"/>
+                        <Button ToolTip="Зчитати дані про студентів" Click="ReadStudents" Content="2"/>
                     </StackPanel>
                 </materialDesign:PopupBox>
                 <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}" ToolTip="Видалити записи" VerticalAlignment="Top" Margin="75,5,0,0" HorizontalAlignment="Left" Click="DeleteStudentsClick">
@@ -117,7 +117,7 @@
         <TabItem Header="Викладачі">
             <Grid Background="#FFE5E5E5">
                 <DataGrid x:Name="ProfessorTable" AutoGenerateColumns="False"
-                            CanUserDeleteRows="False" CanUserAddRows="False" Margin="0,0,0,50">
+                            CanUserDeleteRows="False" CanUserAddRows="False" Margin="0,65,0,0">
                     <DataGrid.Columns>
                         <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Прізвище" Binding="{Binding Path=LastName}" Width="*" />
                         <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Ім'я" Binding="{Binding Path=FirstName}" Width="*" />
@@ -136,7 +136,21 @@
                         <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Куратор групи" Binding="{Binding Path=GroupName}" Width="*" />
                     </DataGrid.Columns>
                 </DataGrid>
-                <Button Content="Зчитати дані про викладачів з файлу" Margin="13,0,0,10" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="164" Click="ReadProfessors"/>
+                <materialDesign:PopupBox Style="{StaticResource MaterialDesignMultiFloatingActionAccentPopupBox}" PlacementMode="BottomAndAlignCentres" ToolTip="Додати викладачів" Margin="5,5,0,0" VerticalAlignment="Top">
+                    <materialDesign:PopupBox.ToggleCheckedContent>
+                        <materialDesign:PackIcon Kind="Pencil" Width="24" Height="24" />
+                    </materialDesign:PopupBox.ToggleCheckedContent>
+                    <StackPanel>
+                        <Button ToolTip="Додати одного викладача" Click="AddProfessorClick" Content="1"/>
+                        <Button ToolTip="Зчитати дані про викладачів" Click="ReadProfessors" Content="2"/>
+                    </StackPanel>
+                </materialDesign:PopupBox>
+                <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}" ToolTip="Видалити записи" VerticalAlignment="Top" Margin="75,5,0,0" HorizontalAlignment="Left" Click="DeleteProfessorsClick">
+                    <materialDesign:PackIcon Kind="DeleteForever" Height="24" Width="24" />
+                </Button>
+                <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}" ToolTip="Зберегти записи" VerticalAlignment="Top" Margin="145,5,0,0" HorizontalAlignment="Left" Click="SaveProfessorsClick">
+                    <materialDesign:PackIcon Kind="ContentSave" Height="24" Width="24" />
+                </Button>
                 <Button Content="Button" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="144" Height="35" Click="FindBestMarkButtonClick"/>
             </Grid>
         </TabItem>

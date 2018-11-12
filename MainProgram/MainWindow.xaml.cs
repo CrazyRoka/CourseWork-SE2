@@ -34,6 +34,64 @@ namespace SE2.CourseWork
             ProfessorTable.ItemsSource = new List<Professor>();
             GroupTable.ItemsSource = GroupsContainer.Groups;
         }
+        private void SaveProfessorsClick(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string fileName = openFileDialog.FileName;
+                StreamWriter writer = null;
+                try
+                {
+                    writer = new StreamWriter(fileName);
+                    List<Professor> professors = ProfessorTable.ItemsSource as List<Professor>;
+                    foreach (Professor professor in professors)
+                        writer += professor;
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Помилка роботи з файлом!", "Результат збереження", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                finally
+                {
+                    try
+                    {
+                        writer?.Close();
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Помилка закриття файлу!", "Результат збереження", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                }
+            }
+        }
+        private void DeleteProfessorsClick(object sender, RoutedEventArgs e)
+        {
+            var professors = (List<Professor>)ProfessorTable.ItemsSource;
+            var selected = ProfessorTable.SelectedItems;
+            if (professors == null)
+            {
+                MessageBox.Show("Введіть дані про викладачів", "Результат видалення", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else if (selected.Count == 0)
+            {
+                MessageBox.Show("Виберіть хоча б одного викладача", "Результат видалення", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                foreach (Professor professor in selected) professors.Remove(professor);
+                ProfessorTable.ItemsSource = null;
+                ProfessorTable.ItemsSource = professors;
+                MessageBox.Show("Записи про викладачів видалено", "Результат видалення", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+        private void AddProfessorClick(object sender, RoutedEventArgs e)
+        {
+            List<Professor> list = (List<Professor>)ProfessorTable.ItemsSource;
+            list.Add(new Professor());
+            ProfessorTable.ItemsSource = null;
+            ProfessorTable.ItemsSource = list;
+        }
         private void SaveStudentsClick(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -87,7 +145,7 @@ namespace SE2.CourseWork
         }
         private void AddStudentClick(object sender, RoutedEventArgs e)
         {
-            List<Student> list = (List<Student>)PersonTable.ItemsSource;
+            List<Student> list = (List<Student>)StudentTable.ItemsSource;
             list.Add(new Student());
             StudentTable.ItemsSource = null;
             StudentTable.ItemsSource = list;
