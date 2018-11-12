@@ -50,7 +50,7 @@ namespace SE2.CourseWork
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Помилка роботи з файлом!", "Результат збереження", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Помилка роботи з файлом!", "Результат збереження", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 finally
                 {
@@ -60,7 +60,7 @@ namespace SE2.CourseWork
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("Помилка закриття файлу!", "Результат збереження", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show("Помилка закриття файлу!", "Результат збереження", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
             }
@@ -71,11 +71,11 @@ namespace SE2.CourseWork
             var selected = ProfessorTable.SelectedItems;
             if (professors == null)
             {
-                MessageBox.Show("Введіть дані про викладачів", "Результат видалення", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Введіть дані про викладачів", "Результат видалення", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else if (selected.Count == 0)
             {
-                MessageBox.Show("Виберіть хоча б одного викладача", "Результат видалення", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Виберіть хоча б одного викладача", "Результат видалення", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else
             {
@@ -112,7 +112,7 @@ namespace SE2.CourseWork
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Помилка роботи з файлом!", "Результат збереження", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Помилка роботи з файлом!", "Результат збереження", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 finally
                 {
@@ -122,7 +122,7 @@ namespace SE2.CourseWork
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("Помилка закриття файлу!", "Результат збереження", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show("Помилка закриття файлу!", "Результат збереження", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
             }
@@ -133,11 +133,11 @@ namespace SE2.CourseWork
             var selected = StudentTable.SelectedItems;
             if (students == null)
             {
-                MessageBox.Show("Введіть дані про студентів", "Результат видалення", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Введіть дані про студентів", "Результат видалення", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else if (selected.Count == 0)
             {
-                MessageBox.Show("Виберіть хоча б одного студента", "Результат видалення", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Виберіть хоча б одного студента", "Результат видалення", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else
             {
@@ -175,7 +175,7 @@ namespace SE2.CourseWork
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Помилка роботи з файлом!", "Результат збереження", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Помилка роботи з файлом!", "Результат збереження", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 finally
                 {
@@ -185,7 +185,7 @@ namespace SE2.CourseWork
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("Помилка закриття файлу!", "Результат збереження", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show("Помилка закриття файлу!", "Результат збереження", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
             }
@@ -196,11 +196,11 @@ namespace SE2.CourseWork
             var selected = PersonTable.SelectedItems;
             if (persons == null)
             {
-                MessageBox.Show("Введіть дані про персон", "Результат видалення", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Введіть дані про персон", "Результат видалення", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else if (selected.Count == 0)
             {
-                MessageBox.Show("Виберіть хоча б одну персону", "Результат видалення", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Виберіть хоча б одну персону", "Результат видалення", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else
             {
@@ -223,14 +223,15 @@ namespace SE2.CourseWork
             IEnumerable<Professor> professors = (IEnumerable<Professor>)ProfessorTable.ItemsSource;
             if(students == null)
             {
-                MessageBox.Show("Введіть дані про студентів", "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Введіть дані про студентів", "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else if(professors == null)
             {
-                MessageBox.Show("Введіть дані про викладачів", "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Введіть дані про викладачів", "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else
             {
+                bool used = false;
                 foreach(Professor professor in professors)
                 {
                     if(professor.Group != null)
@@ -239,29 +240,30 @@ namespace SE2.CourseWork
                             && string.Equals(student.BirthdayDate.Substring(5), professor.BirthdayDate.Substring(5)));
                         if(selectedStudents.Count() != 0)
                         {
+                            used = true;
                             string answer = $"Викладач:\n{professor.ToString()}\nСтуденти:\n";
                             answer += string.Join("\n", selectedStudents);
                             MessageBox.Show(answer, "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Information);
                         }
                     }
                 }
+                MessageBox.Show("Не знайденого жодного результату", "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
         private void FindLowestMarkButtonClick(object sender, RoutedEventArgs e)
         {
-            string answer;
             int course = int.Parse(CourseNumber.Text);
             IEnumerable<Student> students = (IEnumerable<Student>)StudentTable.ItemsSource;
             if(students == null)
             {
-                answer = "Введіть дані про студентів";
+                MessageBox.Show("Введіть дані про студентів", "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else
             {
                 students = students.Where(student => student.Course == course);
                 if(students.Count() == 0)
                 {
-                    answer = "Не існує жодного студента на заданому кусрі";
+                    MessageBox.Show("Не існує жодного студента на заданому кусрі", "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
                 else
                 {
@@ -273,27 +275,25 @@ namespace SE2.CourseWork
                             worstStudent = current;
                         }
                     }
-                    answer = worstStudent.ToString();
+                    MessageBox.Show(worstStudent.ToString(), "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
-            MessageBox.Show(answer, "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Information);
         }
         private void FindBestMarkButtonClick(object sender, RoutedEventArgs e)
         {
-            string answer;
             if (ProfessorTable.SelectedItems.Count == 0)
             {
-                answer = "Виберіть викладача для пошуку.";
+                MessageBox.Show("Виберіть викладача для пошуку.", "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Warning);
             }else if(ProfessorTable.SelectedItems.Count > 1)
             {
-                answer = "Виберіть лише одного викладача.";
+                MessageBox.Show("Виберіть лише одного викладача.", "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else
             {
                 Professor professor = (Professor)ProfessorTable.SelectedItem;
                 if(professor.Group == null)
                 {
-                    answer = "Даний викладач не є куратором жодної групи.";
+                    MessageBox.Show("Даний викладач не є куратором жодної групи.", "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
                 else
                 {
@@ -303,7 +303,7 @@ namespace SE2.CourseWork
                         students = students.Where(student => string.Equals(student.GroupName, professor.GroupName));
                         if (students.Count() == 0)
                         {
-                            answer = "Група не має жодного студента.";
+                            MessageBox.Show("Група не має жодного студента.", "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Warning);
                         }
                         else
                         {
@@ -315,16 +315,15 @@ namespace SE2.CourseWork
                                     bestStudent = current;
                                 }
                             }
-                            answer = bestStudent.ToString();
+                            MessageBox.Show(bestStudent.ToString(), "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Information);
                         }
                     }
                     else
                     {
-                        answer = "Введіть дані про студентів.";
+                        MessageBox.Show("Введіть дані про студентів.", "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                 }
             }
-            MessageBox.Show(answer, "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Information);
         }
         private void FindButtonClick(object sender, RoutedEventArgs e)
         {
@@ -373,6 +372,10 @@ namespace SE2.CourseWork
                 {
                     answer = "Введене число занадто велике (мале)";
                 }
+                catch (Exception)
+                {
+                    answer = "Помилка запиту";
+                }
             }
             MessageBox.Show(answer, "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Information);
         }
@@ -420,7 +423,7 @@ namespace SE2.CourseWork
             }
             catch (Exception)
             {
-                MessageBox.Show("Помилка зчитування з файлу", "Зчитування викладачів", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Помилка зчитування з файлу", "Зчитування викладачів", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
             {
@@ -430,7 +433,7 @@ namespace SE2.CourseWork
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Помилка закривання файлу", "Зчитування викладачів", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Помилка закривання файлу", "Зчитування викладачів", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
@@ -453,7 +456,7 @@ namespace SE2.CourseWork
             }
             catch (Exception)
             {
-                MessageBox.Show("Помилка зчитування з файлу", "Зчитування викладачів", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Помилка зчитування з файлу", "Зчитування викладачів", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
             {
@@ -463,7 +466,7 @@ namespace SE2.CourseWork
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Помилка закривання файлу", "Зчитування викладачів", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Помилка закривання файлу", "Зчитування викладачів", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
@@ -487,7 +490,7 @@ namespace SE2.CourseWork
             }
             catch (Exception)
             {
-                MessageBox.Show("Помилка зчитування з файлу", "Зчитування персон", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Помилка зчитування з файлу", "Зчитування персон", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
             {
@@ -497,7 +500,7 @@ namespace SE2.CourseWork
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Помилка закривання файлу", "Зчитування персон", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Помилка закривання файлу", "Зчитування персон", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
