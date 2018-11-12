@@ -19,7 +19,7 @@
         <TabItem Header="Персони">
             <Grid Background="#FFE5E5E5">
                 <DataGrid x:Name="PersonTable" AutoGenerateColumns="False"
-                            CanUserDeleteRows="False" CanUserAddRows="False" Margin="0,0,0,55">
+                            CanUserDeleteRows="False" CanUserAddRows="False" Margin="0,65,0,0">
                     <DataGrid.Columns>
                         <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Прізвище" Binding="{Binding Path=LastName}" Width="*" />
                         <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Ім'я" Binding="{Binding Path=FirstName}" Width="*" />
@@ -36,17 +36,18 @@
                         <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Номер телефону" Binding="{Binding Path=PhoneNumber}" Width="*" />
                     </DataGrid.Columns>
                 </DataGrid>
-                <Button Content="Зчитати дані про персон" Margin="15,0,0,10" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="250" Click="ReadPersons"/>
-                <materialDesign:PopupBox Style="{StaticResource MaterialDesignMultiFloatingActionAccentPopupBox}" PlacementMode="TopAndAlignCentres" ToolTip="Додати персон" Margin="0,0,15,0" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                <materialDesign:PopupBox Style="{StaticResource MaterialDesignMultiFloatingActionAccentPopupBox}" PlacementMode="BottomAndAlignCentres" ToolTip="Додати персон" Margin="5,5,0,0" VerticalAlignment="Top">
                     <materialDesign:PopupBox.ToggleCheckedContent>
                         <materialDesign:PackIcon Kind="Pencil" Width="24" Height="24" />
                     </materialDesign:PopupBox.ToggleCheckedContent>
                     <StackPanel>
-                        <Button ToolTip="Three" Click="AddPersonClick" Content="3"/>
-                        <Button ToolTip="Two" Click="AddPersonClick" Content="2"/>
-                        <Button ToolTip="One" Click="AddPersonClick" Content="1"/>
+                        <Button ToolTip="Додати одну персону" Click="AddPersonClick" Content="1"/>
+                        <Button ToolTip="Зчитати персон" Click="ReadPersons" Content="2"/>
                     </StackPanel>
                 </materialDesign:PopupBox>
+                <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}" ToolTip="Видалити записи" VerticalAlignment="Top" Margin="75,5,0,0" HorizontalAlignment="Left" Click="DeletePersonsClick">
+                    <materialDesign:PackIcon Kind="DeleteForever" Height="24" Width="24" />
+                </Button>
             </Grid>
         </TabItem>
         <TabItem Header="Студенти">

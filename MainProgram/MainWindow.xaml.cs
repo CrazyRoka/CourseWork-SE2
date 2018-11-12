@@ -34,6 +34,26 @@ namespace SE2.CourseWork
             ProfessorTable.ItemsSource = new List<Professor>();
             GroupTable.ItemsSource = GroupsContainer.Groups;
         }
+        private void DeletePersonsClick(object sender, RoutedEventArgs e)
+        {
+            var persons = (List<Person>)PersonTable.ItemsSource;
+            var selected = PersonTable.SelectedItems;
+            if (persons == null)
+            {
+                MessageBox.Show("Введіть дані про персон", "Результат видалення", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else if (selected.Count == 0)
+            {
+                MessageBox.Show("Виберіть хоча б одну персону", "Результат видалення", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                foreach (Person person in selected) persons.Remove(person);
+                PersonTable.ItemsSource = null;
+                PersonTable.ItemsSource = persons;
+                MessageBox.Show("Записи про персон видалено", "Результат видалення", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
         private void AddPersonClick(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
