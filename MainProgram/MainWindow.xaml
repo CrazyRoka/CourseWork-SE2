@@ -141,7 +141,7 @@
                             </DataGridTextColumn.Binding>
                         </DataGridTextColumn>
                         <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Номер телефону" Binding="{Binding Path=PhoneNumber}" Width="*" />
-                        <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Дисципліни, які викладає" Binding="{Binding Path=SubjectList}" IsReadOnly="True" Width="350" />
+                        <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Дисципліни, які викладає" Binding="{Binding Path=SubjectList}" Width="350" />
                         <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Куратор групи" Binding="{Binding Path=GroupName}" Width="*" />
                     </DataGrid.Columns>
                 </DataGrid>

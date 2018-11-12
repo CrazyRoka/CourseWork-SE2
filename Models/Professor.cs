@@ -11,7 +11,7 @@ namespace SE2.CourseWork.Models
     {
         private Group _group;
         public string[] Subjects { get; set; }
-        public string SubjectList { get => string.Join(", ", Subjects); }
+        public string SubjectList { get => string.Join(", ", Subjects); set => Subjects = value.Split(',').Select(s => s.Trim()).ToArray(); }
         public string GroupName { get => Group?.GroupName; set => Group = GroupsContainer.FindOrCreateGroup(value, Speciality); }
         public string Speciality { get => Group?.SpecialityFullName ?? ""; set => Group.SpecialityFullName = value; }
         public Group Group
