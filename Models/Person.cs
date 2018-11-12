@@ -45,11 +45,6 @@ namespace SE2.CourseWork.Models
         public static StreamReader operator -(StreamReader reader, Person person)
         {
             string line = reader.ReadLine();
-            /*writer.WriteLine($"{student.FirstName},{student.MiddleName}" +
-                $",{student.LastName},{student.BirthdayDate},{student.PhoneNumber}," +
-                $"{student.GroupName},{student.AverageScore}");*/
-            // TODO
-            // PATTERN MATCH
             string[] parts = line.Split(',');
             person.LastName = parts[0]; person.FirstName = parts[1]; person.MiddleName = parts[2]; person.BirthdayDate = parts[3];
             person.PhoneNumber = parts[4];
