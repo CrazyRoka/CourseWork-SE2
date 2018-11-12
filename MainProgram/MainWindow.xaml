@@ -54,65 +54,74 @@
             </Grid>
         </TabItem>
         <TabItem Header="Студенти">
-            <Grid x:Name="FindByAverageScore" Background="#FFE5E5E5" ToolTip="Введіть шукане значення тут">
-                <DataGrid x:Name="StudentTable" AutoGenerateColumns="False"
-                            CanUserDeleteRows="False" CanUserAddRows="False"  Margin="0,65,0,0">
-                    <DataGrid.Columns>
-                        <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Прізвище" Binding="{Binding Path=LastName}" Width="*" />
-                        <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Ім'я" Binding="{Binding Path=FirstName}" Width="*" />
-                        <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="По батькові" Binding="{Binding Path=MiddleName}" Width="*" />
-                        <DataGridTextColumn EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" Header="Дата народження" Width="*" >
-                            <DataGridTextColumn.Binding>
-                                <Binding Path="BirthdayDate">
-                                    <Binding.ValidationRules>
-                                        <local:DateValidationRule />
-                                    </Binding.ValidationRules>
-                                </Binding>
-                            </DataGridTextColumn.Binding>
-                        </DataGridTextColumn>
-                        <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Номер телефону" Binding="{Binding Path=PhoneNumber}" Width="*" />
-                        <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Курс" Binding="{Binding Path=Course}" IsReadOnly="True" Width="70" />
-                        <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Група" Binding="{Binding Path=GroupName}" Width="*" />
-                        <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Кафедра" Binding="{Binding Path=Speciality}" Width="150" />
-                        <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Середній бал" Binding="{Binding Path=AverageScore}" Width="*" />
-                    </DataGrid.Columns>
-                </DataGrid>
-                <materialDesign:PopupBox Style="{StaticResource MaterialDesignMultiFloatingActionAccentPopupBox}" PlacementMode="BottomAndAlignCentres" ToolTip="Додати студентів" Margin="5,5,0,0" VerticalAlignment="Top">
-                    <materialDesign:PopupBox.ToggleCheckedContent>
-                        <materialDesign:PackIcon Kind="Pencil" Width="24" Height="24" />
-                    </materialDesign:PopupBox.ToggleCheckedContent>
-                    <StackPanel>
-                        <Button ToolTip="Додати одного студента" Click="AddStudentClick" Content="1"/>
-                        <Button ToolTip="Зчитати дані про студентів" Click="ReadStudents" Content="2"/>
-                    </StackPanel>
-                </materialDesign:PopupBox>
-                <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}" ToolTip="Видалити записи" VerticalAlignment="Top" Margin="75,5,0,0" HorizontalAlignment="Left" Click="DeleteStudentsClick">
-                    <materialDesign:PackIcon Kind="DeleteForever" Height="24" Width="24" />
-                </Button>
-                <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}" ToolTip="Зберегти записи" VerticalAlignment="Top" Margin="145,5,0,0" HorizontalAlignment="Left" Click="SaveStudentsClick">
-                    <materialDesign:PackIcon Kind="ContentSave" Height="24" Width="24" />
-                </Button>
-                <Label Content="Пошук студента за:" HorizontalAlignment="Left" Margin="10,0,0,125" VerticalAlignment="Bottom"/>
-                <materialDesign:ColorZone Mode="PrimaryMid" HorizontalAlignment="Left" Margin="10,0,0,85" VerticalAlignment="Bottom">
-                    <StackPanel Orientation="Horizontal">
-                        <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" IsChecked="True" x:Name="FindByLastName" Content="Прізвищем" HorizontalAlignment="Left" />
-                        <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" IsChecked="False" x:Name="FindByGroup" Content="Групою" HorizontalAlignment="Left" />
-                        <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" IsChecked="False" x:Name="FindByAverageScore1" Content="Середнім балом" HorizontalAlignment="Left" />
-                    </StackPanel>
-                </materialDesign:ColorZone>
-                <TextBox x:Name="FindTextBox"  materialDesign:HintAssist.Hint="Шукане значення" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,0,45" Width="350" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-                <Button x:Name="FindButton" Content="Знайти студента(ів)" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="350" Height="30" Click="FindButtonClick" />
-                <Button x:Name="FindWorstStudent" Content="Знайти найгіршого студента на курсі" HorizontalAlignment="Left" Margin="400,0,0,10" VerticalAlignment="Bottom" Width="300" Height="30" Click="FindLowestMarkButtonClick"/>
-                <ComboBox x:Name="CourseNumber" HorizontalAlignment="Left" Margin="400,0,0,85" VerticalAlignment="Bottom" Width="300" SelectedIndex="0" materialDesign:HintAssist.Hint="Заданий курс" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                    <ComboBoxItem>1</ComboBoxItem>
-                    <ComboBoxItem>2</ComboBoxItem>
-                    <ComboBoxItem>3</ComboBoxItem>
-                    <ComboBoxItem>4</ComboBoxItem>
-                    <ComboBoxItem>5</ComboBoxItem>
-                    <ComboBoxItem>6</ComboBoxItem>
-                </ComboBox>
-                <Button x:Name="FindSameBirthday" Content="Вивести студентів з однаковим днем&#x0a;народження з куратором" HorizontalAlignment="Left" Margin="750,0,0,10" VerticalAlignment="Bottom" Width="350" Height="80" Click="FindSameBirthdayButtonClick"/>
-            </Grid>
+            <materialDesign:DialogHost CloseOnClickAway="True">
+                <materialDesign:DialogHost.DialogContent>
+                    <Grid Margin="20">
+                        <Label Content="Пошук студента за:" HorizontalAlignment="Left" Margin="10,0,0,125" VerticalAlignment="Bottom"/>
+                        <materialDesign:ColorZone Mode="PrimaryMid" HorizontalAlignment="Left" Margin="10,0,0,85" VerticalAlignment="Bottom">
+                            <StackPanel Orientation="Horizontal">
+                                <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" IsChecked="True" x:Name="FindByLastName" Content="Прізвищем" HorizontalAlignment="Left" />
+                                <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" IsChecked="False" x:Name="FindByGroup" Content="Групою" HorizontalAlignment="Left" />
+                                <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" IsChecked="False" x:Name="FindByAverageScore1" Content="Середнім балом" HorizontalAlignment="Left" />
+                            </StackPanel>
+                        </materialDesign:ColorZone>
+                        <TextBox x:Name="FindTextBox"  materialDesign:HintAssist.Hint="Шукане значення" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,0,45" Width="350" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                        <Button x:Name="FindButton" Content="Знайти студента(ів)" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="350" Height="30" Click="FindButtonClick" />
+                        <Button x:Name="FindWorstStudent" Content="Знайти найгіршого &#x0a;студента на курсі" HorizontalAlignment="Left" Margin="400,0,0,10" VerticalAlignment="Bottom" Width="200" Height="60" Click="FindLowestMarkButtonClick"/>
+                        <ComboBox x:Name="CourseNumber" HorizontalAlignment="Left" Margin="400,0,0,95" VerticalAlignment="Bottom" Width="200" SelectedIndex="0" materialDesign:HintAssist.Hint="Заданий курс" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                            <ComboBoxItem>1</ComboBoxItem>
+                            <ComboBoxItem>2</ComboBoxItem>
+                            <ComboBoxItem>3</ComboBoxItem>
+                            <ComboBoxItem>4</ComboBoxItem>
+                            <ComboBoxItem>5</ComboBoxItem>
+                            <ComboBoxItem>6</ComboBoxItem>
+                        </ComboBox>
+                        <Button x:Name="FindSameBirthday" Content="Вивести студентів з&#x0a;однаковим днем&#x0a;народження з куратором" HorizontalAlignment="Left" Margin="650,0,0,10" VerticalAlignment="Bottom" Width="250" Height="120" Click="FindSameBirthdayButtonClick"/>
+                    </Grid>
+                </materialDesign:DialogHost.DialogContent>
+                <Grid x:Name="FindByAverageScore" Background="#FFE5E5E5">
+                    <DataGrid x:Name="StudentTable" AutoGenerateColumns="False"
+                                CanUserDeleteRows="False" CanUserAddRows="False"  Margin="0,65,0,0">
+                        <DataGrid.Columns>
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Прізвище" Binding="{Binding Path=LastName}" Width="*" />
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Ім'я" Binding="{Binding Path=FirstName}" Width="*" />
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="По батькові" Binding="{Binding Path=MiddleName}" Width="*" />
+                            <DataGridTextColumn EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" Header="Дата народження" Width="*" >
+                                <DataGridTextColumn.Binding>
+                                    <Binding Path="BirthdayDate">
+                                        <Binding.ValidationRules>
+                                            <local:DateValidationRule />
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Номер телефону" Binding="{Binding Path=PhoneNumber}" Width="*" />
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Курс" Binding="{Binding Path=Course}" IsReadOnly="True" Width="70" />
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Група" Binding="{Binding Path=GroupName}" Width="*" />
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Кафедра" Binding="{Binding Path=Speciality}" Width="150" />
+                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Середній бал" Binding="{Binding Path=AverageScore}" Width="*" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <materialDesign:PopupBox Style="{StaticResource MaterialDesignMultiFloatingActionAccentPopupBox}" PlacementMode="BottomAndAlignCentres" ToolTip="Додати студентів" Margin="5,5,0,0" VerticalAlignment="Top">
+                        <materialDesign:PopupBox.ToggleCheckedContent>
+                            <materialDesign:PackIcon Kind="Pencil" Width="24" Height="24" />
+                        </materialDesign:PopupBox.ToggleCheckedContent>
+                        <StackPanel>
+                            <Button ToolTip="Додати одного студента" Click="AddStudentClick" Content="1"/>
+                            <Button ToolTip="Зчитати дані про студентів" Click="ReadStudents" Content="2"/>
+                        </StackPanel>
+                    </materialDesign:PopupBox>
+                    <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}" ToolTip="Видалити записи" VerticalAlignment="Top" Margin="75,5,0,0" HorizontalAlignment="Left" Click="DeleteStudentsClick">
+                        <materialDesign:PackIcon Kind="DeleteForever" Height="24" Width="24" />
+                    </Button>
+                    <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}" ToolTip="Зберегти записи" VerticalAlignment="Top" Margin="145,5,0,0" HorizontalAlignment="Left" Click="SaveStudentsClick">
+                        <materialDesign:PackIcon Kind="ContentSave" Height="24" Width="24" />
+                    </Button>
+                    <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}" ToolTip="Пошук за критерієм" VerticalAlignment="Top" Margin="215,5,0,0" HorizontalAlignment="Left" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}">
+                        <materialDesign:PackIcon Kind="FileFindOutline" Height="24" Width="24" />
+                    </Button>
+                </Grid>
+            </materialDesign:DialogHost>
         </TabItem>
         <TabItem Header="Викладачі">
             <Grid Background="#FFE5E5E5">
@@ -151,7 +160,9 @@
                 <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}" ToolTip="Зберегти записи" VerticalAlignment="Top" Margin="145,5,0,0" HorizontalAlignment="Left" Click="SaveProfessorsClick">
                     <materialDesign:PackIcon Kind="ContentSave" Height="24" Width="24" />
                 </Button>
-                <Button Content="Button" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="144" Height="35" Click="FindBestMarkButtonClick"/>
+                <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}" ToolTip="Пошук за критерієм" VerticalAlignment="Top" Margin="215,5,0,0" HorizontalAlignment="Left" Click="FindBestMarkButtonClick">
+                    <materialDesign:PackIcon Kind="FileFindOutline" Height="24" Width="24" />
+                </Button>
             </Grid>
         </TabItem>
         <TabItem Header="Групи">
