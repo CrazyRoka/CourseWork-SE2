@@ -34,6 +34,26 @@ namespace SE2.CourseWork
             ProfessorTable.ItemsSource = new List<Professor>();
             GroupTable.ItemsSource = GroupsContainer.Groups;
         }
+        private void SavePersonsClick(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string fileName = openFileDialog.FileName;
+                try
+                {
+                    StreamWriter writer = new StreamWriter(fileName);
+                    List<Person> persons = PersonTable.ItemsSource as List<Person>;
+                    foreach (Person person in persons)
+                        writer += person;
+                    writer.Close();
+                }
+                catch (IOException)
+                {
+                    MessageBox.Show("Помилка роботи з файлом!", "Результат збереження", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+        }
         private void DeletePersonsClick(object sender, RoutedEventArgs e)
         {
             var persons = (List<Person>)PersonTable.ItemsSource;
@@ -268,9 +288,10 @@ namespace SE2.CourseWork
 
         private void readStudentData(string fileName)
         {
-            StreamReader file = new StreamReader(fileName);
+            StreamReader file = null;
             try
             {
+                file = new StreamReader(fileName);
                 List<Student> students = new List<Student>();
                 while (!file.EndOfStream)
                 {
@@ -280,17 +301,28 @@ namespace SE2.CourseWork
                 }
                 StudentTable.ItemsSource = students;
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Помилка зчитування з файлу", "Зчитування викладачів", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
             finally
             {
-                file.Close();
+                try
+                {
+                    file?.Close();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Помилка закривання файлу", "Зчитування викладачів", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
         }
 
         private void readProfessorsData(string fileName)
         {
-            StreamReader file = new StreamReader(fileName);
-            try
-            {
+            StreamReader file = null;
+            try { 
+                file = new StreamReader(fileName);
                 List<Professor> professors = new List<Professor>();
                 while (!file.EndOfStream)
                 {
@@ -300,21 +332,52 @@ namespace SE2.CourseWork
                 }
                 ProfessorTable.ItemsSource = professors;
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Помилка зчитування з файлу", "Зчитування викладачів", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
             finally
             {
-                file.Close();
+                try
+                {
+                    file?.Close();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Помилка закривання файлу", "Зчитування викладачів", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
         }
 
         private void readPersonData(string fileName)
         {
-            using (StreamReader file = new StreamReader(fileName))
+            StreamReader file = null;
+            try
             {
-                using (CsvReader reader = new CsvReader(file))
+                file = new StreamReader(fileName);
+                List<Person> persons = new List<Person>();
+                while (!file.EndOfStream)
                 {
-                    List<Person> persons = new List<Person>(reader.GetRecords<Person>());
-                    PersonTable.ItemsSource = null;
-                    PersonTable.ItemsSource = persons;
+                    Person current = new Person();
+                    file -= current;
+                    persons.Add(current);
+                }
+                PersonTable.ItemsSource = null;
+                PersonTable.ItemsSource = persons;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Помилка зчитування з файлу", "Зчитування персон", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            finally
+            {
+                try
+                {
+                    file?.Close();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Помилка закривання файлу", "Зчитування персон", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
         }

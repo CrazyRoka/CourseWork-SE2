@@ -48,6 +48,9 @@
                 <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}" ToolTip="Видалити записи" VerticalAlignment="Top" Margin="75,5,0,0" HorizontalAlignment="Left" Click="DeletePersonsClick">
                     <materialDesign:PackIcon Kind="DeleteForever" Height="24" Width="24" />
                 </Button>
+                <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}" ToolTip="Зберегти записи" VerticalAlignment="Top" Margin="145,5,0,0" HorizontalAlignment="Left" Click="SavePersonsClick">
+                    <materialDesign:PackIcon Kind="ContentSave" Height="24" Width="24" />
+                </Button>
             </Grid>
         </TabItem>
         <TabItem Header="Студенти">

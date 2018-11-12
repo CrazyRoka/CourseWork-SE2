@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +35,25 @@ namespace SE2.CourseWork.Models
         public override string ToString()
         {
             return $"{FullName()} {BirthdayDate} {PhoneNumber}";
+        }
+        public static StreamWriter operator +(StreamWriter writer, Person person)
+        {
+            writer.WriteLine($"{person.LastName},{person.FirstName}" +
+                $",{person.MiddleName},{person.BirthdayDate},{person.PhoneNumber}");
+            return writer;
+        }
+        public static StreamReader operator -(StreamReader reader, Person person)
+        {
+            string line = reader.ReadLine();
+            /*writer.WriteLine($"{student.FirstName},{student.MiddleName}" +
+                $",{student.LastName},{student.BirthdayDate},{student.PhoneNumber}," +
+                $"{student.GroupName},{student.AverageScore}");*/
+            // TODO
+            // PATTERN MATCH
+            string[] parts = line.Split(',');
+            person.LastName = parts[0]; person.FirstName = parts[1]; person.MiddleName = parts[2]; person.BirthdayDate = parts[3];
+            person.PhoneNumber = parts[4];
+            return reader;
         }
     }
 }

@@ -20,13 +20,11 @@ namespace SE2.CourseWork.Generators
         public static void GenerateData(int numberOfItems, string fileName)
         {
             Console.WriteLine("Generating persons");
-            using (StreamWriter file = new StreamWriter(fileName))
+            StreamWriter file = new StreamWriter(fileName);
+            IList<Person> data = GenerateList(numberOfItems);
+            foreach (Person person in data)
             {
-                IList<Person> data = GenerateList(numberOfItems);
-                using (CsvWriter writer = new CsvWriter(file))
-                {
-                    writer.WriteRecords(data);
-                }
+                file += person;
             }
         }
         protected static IList<Person> GenerateList(int numberOfItems)
