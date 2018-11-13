@@ -21,9 +21,9 @@
                 <DataGrid x:Name="PersonTable" AutoGenerateColumns="False"
                             CanUserDeleteRows="False" CanUserAddRows="False" Margin="0,65,0,0">
                     <DataGrid.Columns>
-                        <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Прізвище" Binding="{Binding Path=LastName}" Width="*" />
-                        <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Ім'я" Binding="{Binding Path=FirstName}" Width="*" />
-                        <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="По батькові" Binding="{Binding Path=MiddleName}" Width="*" />
+                        <DataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" Header="Прізвище" Binding="{Binding Path=LastName}" Width="*" />
+                        <DataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" Header="Ім'я" Binding="{Binding Path=FirstName}" Width="*" />
+                        <DataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" Header="По батькові" Binding="{Binding Path=MiddleName}" Width="*" />
                         <DataGridTextColumn EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" Header="Дата народження" Width="*" >
                             <DataGridTextColumn.Binding>
                                 <Binding Path="BirthdayDate">

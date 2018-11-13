@@ -12,13 +12,13 @@ namespace SE2.CourseWork
     {
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-            if (value == null) return new ValidationResult(false, "Date can not be empty.");
+            if (value == null || (value as string).Length == 0) return new ValidationResult(false, "Дата не може бути пустою");
             try
             {
                 DateTime.ParseExact(value as string, "yyyy-MM-dd", null);
             }catch(FormatException)
             {
-                return new ValidationResult(false, "Invalid date format. Please, write in format: year-month-day");
+                return new ValidationResult(false, "Неправильний формат дати. Будь ласка, дотримуйтесь формату: рік-місяць-день");
             }
             return new ValidationResult(true, null);
         }
