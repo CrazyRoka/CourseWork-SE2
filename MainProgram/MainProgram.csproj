@@ -63,6 +63,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ScoreValidationRule.cs" />
     <Compile Include="PhoneValidationRule.cs" />
     <Compile Include="NameValidationRule.cs" />
     <Compile Include="DateValidationRule.cs" />

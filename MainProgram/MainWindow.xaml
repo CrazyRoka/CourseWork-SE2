@@ -163,7 +163,15 @@
                             <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Курс" Binding="{Binding Path=Course}" IsReadOnly="True" Width="70" />
                             <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Група" Binding="{Binding Path=GroupName}" Width="*" />
                             <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Кафедра" Binding="{Binding Path=Speciality}" Width="150" />
-                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Середній бал" Binding="{Binding Path=AverageScore}" Width="*" />
+                            <DataGridTextColumn EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" Header="Середній бал" Width="*">
+                                <DataGridTextColumn.Binding>
+                                    <Binding Path="AverageScore">
+                                        <Binding.ValidationRules>
+                                            <local:ScoreValidationRule />
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                     <materialDesign:PopupBox Style="{StaticResource MaterialDesignMultiFloatingActionAccentPopupBox}" PlacementMode="BottomAndAlignCentres" ToolTip="Додати студентів" Margin="5,5,0,0" VerticalAlignment="Top">
