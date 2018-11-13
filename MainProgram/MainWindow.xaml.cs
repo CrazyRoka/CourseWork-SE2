@@ -2,22 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using CsvHelper;
 using System.IO;
 using SE2.CourseWork.Models;
-using SE2.CourseWork.Generators;
-using System.Collections.ObjectModel;
 
 namespace SE2.CourseWork
 {
@@ -92,7 +79,7 @@ namespace SE2.CourseWork
         private void AddProfessorClick(object sender, RoutedEventArgs e)
         {
             List<Professor> list = (List<Professor>)ProfessorTable.ItemsSource;
-            list.Add(new Professor());
+            list.Add(Randomizer.generateProfessor());
             ProfessorTable.ItemsSource = null;
             ProfessorTable.ItemsSource = list;
         }
@@ -155,7 +142,7 @@ namespace SE2.CourseWork
         private void AddStudentClick(object sender, RoutedEventArgs e)
         {
             List<Student> list = (List<Student>)StudentTable.ItemsSource;
-            list.Add(new Student());
+            list.Add(Randomizer.generateStudent());
             StudentTable.ItemsSource = null;
             StudentTable.ItemsSource = list;
         }
@@ -213,7 +200,7 @@ namespace SE2.CourseWork
         private void AddPersonClick(object sender, RoutedEventArgs e)
         {
             List<Person> list = (List<Person>)PersonTable.ItemsSource;
-            list.Add(new Person());
+            list.Add(Randomizer.generatePerson());
             PersonTable.ItemsSource = null;
             PersonTable.ItemsSource = list;
         }

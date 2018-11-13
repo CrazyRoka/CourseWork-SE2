@@ -108,10 +108,6 @@
       <Project>{efbb0879-4584-46bc-8311-bb040e3c7ee0}</Project>
       <Name>Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PersonGenerator\Generators.csproj">
-      <Project>{24894c7f-6f40-42a6-b3bf-4eac2d4c59ec}</Project>
-      <Name>Generators</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="CsvHelper">

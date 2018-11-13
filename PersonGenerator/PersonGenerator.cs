@@ -29,27 +29,10 @@ namespace SE2.CourseWork.Generators
         }
         protected static IList<Person> GenerateList(int numberOfItems)
         {
-            return Builder<Person>.CreateListOfSize(numberOfItems).All()
-                .With(person => person.FirstName = Faker.Name.First())
-                .With(person => person.MiddleName = Faker.Name.First())
-                .With(person => person.LastName = Faker.Name.Last())
-                .With(person => person.PhoneNumber = RandomNumber())
-                .With(person => person.BirthdayDate = RandomDay().ToString())
-                .Build();
-        }
-        protected static DateTime RandomDay()
-        {
-            DateTime start = new DateTime(1990, 1, 1);
-            DateTime end = new DateTime(2002, 1, 1);
-            int range = (end - start).Days;
-            return start.AddDays(random.Next(range));
-        }
-        protected static string RandomNumber()
-        {
-            string number = "+380";
-            for (int i = 0; i < 9; i++)
-                number += random.Next(10);
-            return number;
+            List<Person> list = new List<Person>();
+            for (int i = 0; i < numberOfItems; i++)
+                list.Add(Randomizer.generatePerson());
+            return list;
         }
     }
 }
