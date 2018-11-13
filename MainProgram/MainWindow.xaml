@@ -21,9 +21,33 @@
                 <DataGrid x:Name="PersonTable" AutoGenerateColumns="False"
                             CanUserDeleteRows="False" CanUserAddRows="False" Margin="0,65,0,0">
                     <DataGrid.Columns>
-                        <DataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" Header="Прізвище" Binding="{Binding Path=LastName}" Width="*" />
-                        <DataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" Header="Ім'я" Binding="{Binding Path=FirstName}" Width="*" />
-                        <DataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" Header="По батькові" Binding="{Binding Path=MiddleName}" Width="*" />
+                        <DataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" Header="Прізвище" Width="*">
+                            <DataGridTextColumn.Binding>
+                                <Binding Path="LastName">
+                                    <Binding.ValidationRules>
+                                        <local:NameValidationRule />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </DataGridTextColumn.Binding>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" Header="Ім'я" Width="*">
+                            <DataGridTextColumn.Binding>
+                                <Binding Path="FirstName">
+                                    <Binding.ValidationRules>
+                                        <local:NameValidationRule />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </DataGridTextColumn.Binding>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" Header="По батькові" Width="*">
+                            <DataGridTextColumn.Binding>
+                                <Binding Path="MiddleName">
+                                    <Binding.ValidationRules>
+                                        <local:NameValidationRule />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </DataGridTextColumn.Binding>
+                        </DataGridTextColumn>
                         <DataGridTextColumn EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" Header="Дата народження" Width="*" >
                             <DataGridTextColumn.Binding>
                                 <Binding Path="BirthdayDate">
