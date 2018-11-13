@@ -9,6 +9,7 @@ namespace SE2.CourseWork.Models
 {
     public class Student : Person
     {
+        // публічні поля класу
         public Group Group { get; set; }
         public string GroupName {
             get => Group?.GroupName;
@@ -22,6 +23,7 @@ namespace SE2.CourseWork.Models
         public string Speciality { get => Group?.SpecialityFullName; set => Group.SpecialityFullName = value; }
         public int Course { get => Group.Course; }
         public decimal AverageScore { get; set; }
+        // конструктори класу
         public Student() : base()
         {
 
@@ -35,6 +37,7 @@ namespace SE2.CourseWork.Models
         {
 
         }
+        // перезавантажені оператори для зчитування / запису з файлів
         public static StreamWriter operator +(StreamWriter writer, Student student)
         {
             writer.WriteLine($"{student.FirstName},{student.MiddleName}" +

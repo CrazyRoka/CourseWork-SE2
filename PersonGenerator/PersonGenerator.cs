@@ -26,6 +26,7 @@ namespace SE2.CourseWork.Generators
             {
                 file += person;
             }
+            file.Close();
         }
         protected static IList<Person> GenerateList(int numberOfItems)
         {

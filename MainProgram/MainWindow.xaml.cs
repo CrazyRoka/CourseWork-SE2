@@ -204,6 +204,7 @@ namespace SE2.CourseWork
             PersonTable.ItemsSource = null;
             PersonTable.ItemsSource = list;
         }
+        // Знаходження студентів, які мають день народження одного дня з куратором
         private void FindSameBirthdayButtonClick(object sender, RoutedEventArgs e)
         {
             IEnumerable<Student> students = (IEnumerable<Student>)StudentTable.ItemsSource;
@@ -238,6 +239,7 @@ namespace SE2.CourseWork
                     MessageBox.Show("Не знайденого жодного результату", "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
+        // знайти студента з найнижчою оцінкою для заданого курсу
         private void FindLowestMarkButtonClick(object sender, RoutedEventArgs e)
         {
             int course = int.Parse(CourseNumber.Text);
@@ -267,6 +269,7 @@ namespace SE2.CourseWork
                 }
             }
         }
+        // знайти студента з найкращою оцінкою для заданого куратора групи
         private void FindBestMarkButtonClick(object sender, RoutedEventArgs e)
         {
             if (ProfessorTable.SelectedItems.Count == 0)
@@ -313,6 +316,7 @@ namespace SE2.CourseWork
                 }
             }
         }
+        // пошук студентів за критерієм
         private void FindButtonClick(object sender, RoutedEventArgs e)
         {
             string text = FindTextBox.Text;
@@ -409,7 +413,7 @@ namespace SE2.CourseWork
                 StudentTable.ItemsSource = null;
                 StudentTable.ItemsSource = previous.Concat(students).ToList();
             }
-            catch (Exception exc)
+            catch (Exception)
             {
                 MessageBox.Show("Помилка зчитування з файлу", "Зчитування викладачів", MessageBoxButton.OK, MessageBoxImage.Error);
             }

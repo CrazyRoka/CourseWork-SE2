@@ -9,7 +9,9 @@ namespace SE2.CourseWork.Models
 {
     public class Professor : Person
     {
+        // приватне поле групи
         private Group _group;
+        // публічні поля (гетери та сетери)
         public string[] Subjects { get; set; }
         public string SubjectList { get => string.Join(", ", Subjects); set => Subjects = value.Split(',').Select(s => s.Trim()).ToArray(); }
         public string GroupName { get => Group?.GroupName; set => Group = GroupsContainer.FindOrCreateGroup(value, Speciality); }
@@ -30,6 +32,7 @@ namespace SE2.CourseWork.Models
 
             }
         }
+        // конструктори класу
         public Professor() : base()
         {
 
@@ -43,6 +46,7 @@ namespace SE2.CourseWork.Models
         {
 
         }
+        // перезавантажені оператори для зчитування / запису з файлів
         public static StreamWriter operator +(StreamWriter writer, Professor professor)
         {
             writer.WriteLine($"{professor.FirstName},{professor.MiddleName}" +

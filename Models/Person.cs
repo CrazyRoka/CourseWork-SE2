@@ -9,13 +9,16 @@ namespace SE2.CourseWork.Models
 {
     public class Person
     {
+        // протектед поле для дати народження
         protected DateTime _birthdayDate;
+        // публічні поля класу (гетери і сетери)
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
         public string BirthdayDate { get => _birthdayDate.ToString("yyyy-MM-dd"); set => _birthdayDate = DateTime.Parse(value); }
         public string PhoneNumber { get; set; }
         public string FullName() => $"{LastName} {FirstName} {MiddleName}";
+        // Конструктори класу
         public Person()
         {
 
@@ -36,6 +39,7 @@ namespace SE2.CourseWork.Models
         {
             return $"{FullName()} {BirthdayDate} {PhoneNumber}";
         }
+        // перезагружені оператори для запису / зчитування з файлів
         public static StreamWriter operator +(StreamWriter writer, Person person)
         {
             writer.WriteLine($"{person.LastName},{person.FirstName}" +

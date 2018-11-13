@@ -9,7 +9,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
         mc:Ignorable="d"
-        Title="MainWindow" Height="694.9" Width="1156.46"
+        Title="Студенсько-Викладацький склад ВУЗу" Height="694.9" Width="1156.46"
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}">
     <dragablz:TabablzControl>
