@@ -253,7 +253,7 @@ namespace SE2.CourseWork
                 students = students.Where(student => student.Course == course);
                 if(students.Count() == 0)
                 {
-                    MessageBox.Show("Не існує жодного студента на заданому кусрі", "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("Не існує жодного студента на заданому курсі", "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
                 else
                 {
@@ -321,7 +321,7 @@ namespace SE2.CourseWork
         {
             string text = FindTextBox.Text;
             string answer;
-            if(StudentTable.ItemsSource == null)
+            if(StudentTable.ItemsSource == null || (StudentTable.ItemsSource as IEnumerable<Student>).Count() == 0)
             {
                 answer = "Введіть дані про студентів";
             }
