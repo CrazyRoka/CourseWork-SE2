@@ -15,7 +15,7 @@ namespace SE2.CourseWork
         {
             if (value == null || (value as string)?.Length == 0) return new ValidationResult(false, "Поле не може бути пустим");
             string name = value as string;
-            Regex regex = new Regex(@"\+[0-9]+");
+            Regex regex = new Regex(@"^\+[0-9]+$");
             if (!regex.IsMatch(name)) return new ValidationResult(false, "Номер повинен починатись зі знаку '+' та містити тільки цифри");
             return new ValidationResult(true, null);
         }

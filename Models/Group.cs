@@ -35,7 +35,7 @@ namespace SE2.CourseWork.Models
         }
         public Group(string groupName, string specialityName)
         {
-            Regex regex = new Regex(@"\A(\p{Lu}+)([1-6])([0-9]+)\z");
+            Regex regex = new Regex(@"^([\p{L}]+)([0-9])([0-9]+)$");
             if (regex.IsMatch(groupName)){
                 Match match = regex.Match(groupName);
                 Speciality = match.Groups[1].Value;
@@ -46,7 +46,7 @@ namespace SE2.CourseWork.Models
             }
             else
             {
-                throw new FormatException("Invalid group name!");
+                throw new FormatException("Неправильне ім'я групи!");
             }
         }
         public void AddStudent(Student student) => _students.Add(student);

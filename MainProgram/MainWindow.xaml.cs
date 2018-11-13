@@ -247,7 +247,8 @@ namespace SE2.CourseWork
                         }
                     }
                 }
-                MessageBox.Show("Не знайденого жодного результату", "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Warning);
+                if(!used)
+                    MessageBox.Show("Не знайденого жодного результату", "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
         private void FindLowestMarkButtonClick(object sender, RoutedEventArgs e)
@@ -421,7 +422,7 @@ namespace SE2.CourseWork
                 StudentTable.ItemsSource = null;
                 StudentTable.ItemsSource = previous.Concat(students).ToList();
             }
-            catch (Exception)
+            catch (Exception exc)
             {
                 MessageBox.Show("Помилка зчитування з файлу", "Зчитування викладачів", MessageBoxButton.OK, MessageBoxImage.Error);
             }
