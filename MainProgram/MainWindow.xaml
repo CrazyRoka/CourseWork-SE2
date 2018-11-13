@@ -170,7 +170,15 @@
                                     </Binding>
                                 </DataGridTextColumn.Binding>
                             </DataGridTextColumn>
-                            <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Кафедра" Binding="{Binding Path=Speciality}" Width="150" />
+                            <DataGridTextColumn EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" Header="Кафедра" Width="150">
+                                <DataGridTextColumn.Binding>
+                                    <Binding Path="Speciality">
+                                        <Binding.ValidationRules>
+                                            <local:SpecialityValidationRule />
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
                             <DataGridTextColumn EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" Header="Середній бал" Width="*">
                                 <DataGridTextColumn.Binding>
                                     <Binding Path="AverageScore">
@@ -254,7 +262,15 @@
                             </DataGridTextColumn.Binding>
                         </DataGridTextColumn>
                         <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Дисципліни, які викладає" Binding="{Binding Path=SubjectList}" Width="350" />
-                        <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Куратор групи" Binding="{Binding Path=GroupName}" Width="*" />
+                        <DataGridTextColumn EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" Header="Група" Width="*">
+                            <DataGridTextColumn.Binding>
+                                <Binding Path="GroupName">
+                                    <Binding.ValidationRules>
+                                        <local:ProfessorGroupValidationRule />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </DataGridTextColumn.Binding>
+                        </DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
                 <materialDesign:PopupBox Style="{StaticResource MaterialDesignMultiFloatingActionAccentPopupBox}" PlacementMode="BottomAndAlignCentres" ToolTip="Додати викладачів" Margin="5,5,0,0" VerticalAlignment="Top">
@@ -284,9 +300,33 @@
                     <DataGrid.Columns>
                         <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Група" Binding="{Binding Path=GroupName}" IsReadOnly="True" Width="*" />
                         <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Спеціальність" Binding="{Binding Path=Speciality}" Width="*" />
-                        <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Кафедра" Binding="{Binding Path=SpecialityFullName}" Width="*" />
-                        <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Курс" Binding="{Binding Path=Course}" Width="*" />
-                        <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Номер групи" Binding="{Binding Path=Number}" Width="*" />
+                        <DataGridTextColumn EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" Header="Кафедра" Width="150">
+                            <DataGridTextColumn.Binding>
+                                <Binding Path="SpecialityFullName">
+                                    <Binding.ValidationRules>
+                                        <local:SpecialityValidationRule />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </DataGridTextColumn.Binding>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" Header="Курс" Width="*">
+                            <DataGridTextColumn.Binding>
+                                <Binding Path="Course">
+                                    <Binding.ValidationRules>
+                                        <local:CourseValidationRule />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </DataGridTextColumn.Binding>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" Header="Номер групи" Width="*" >
+                            <DataGridTextColumn.Binding>
+                                <Binding Path="Number">
+                                    <Binding.ValidationRules>
+                                        <local:GroupNumberValidationRule />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </DataGridTextColumn.Binding>
+                        </DataGridTextColumn>
                         <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Кількість студентів" Binding="{Binding Path=NumberOfStudents}" IsReadOnly="True" Width="*" />
                         <materialDesign:MaterialDataGridTextColumn  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" Header="Куратор" Binding="{Binding Path=CuratorsName}" IsReadOnly="True" Width="*" />
                     </DataGrid.Columns>
