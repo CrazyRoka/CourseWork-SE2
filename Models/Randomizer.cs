@@ -23,8 +23,15 @@ namespace SE2.CourseWork.Models
         }
         public static Student generateStudent()
         {
-            return new Student(Faker.Name.First(), Faker.Name.First(), Faker.Name.Last(), RandomDay(),
-                RandomNumber(), RandomGroup(), decimal.Round((decimal)random.NextDouble() * 100, 2));
+            Student student = new Student();
+            student.FirstName = Faker.Name.First();
+            student.MiddleName = Faker.Name.First();
+            student.LastName = Faker.Name.Last();
+            student.BirthdayDate = RandomDay().ToString("yyyy-MM-dd");
+            student.PhoneNumber = RandomNumber();
+            student.GroupName = RandomGroup().GroupName;
+            student.AverageScore = decimal.Round((decimal)random.NextDouble() * 100, 2);
+            return student;
         }
         protected static DateTime RandomDay()
         {
@@ -36,7 +43,9 @@ namespace SE2.CourseWork.Models
         protected static Group RandomGroup()
         {
             string speciality = Specialities[random.Next(Specialities.Length - 1)];
-            return new Group(speciality, fullName[speciality], random.Next(1, 7), random.Next(1, 6), null);
+            Group group = new Group(speciality, fullName[speciality], random.Next(1, 7), random.Next(1, 6), null);
+            group = GroupsContainer.FindOrCreateGroup(group.GroupName, group.SpecialityFullName);
+            return group;
         }
         protected static string RandomNumber()
         {
