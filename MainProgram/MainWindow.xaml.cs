@@ -446,7 +446,7 @@ namespace SE2.CourseWork
                 ProfessorTable.ItemsSource = null;
                 ProfessorTable.ItemsSource = previous.Concat(professors).ToList();
             }
-            catch (Exception)
+            catch (Exception exs)
             {
                 MessageBox.Show("Помилка зчитування з файлу", "Зчитування викладачів", MessageBoxButton.OK, MessageBoxImage.Error);
             }

@@ -18,8 +18,15 @@ namespace SE2.CourseWork.Models
         }
         public static Professor generateProfessor()
         {
-            return new Professor(Faker.Name.First(), Faker.Name.First(), Faker.Name.Last(), RandomDay(),
-                    RandomNumber(), RandomGroup(), Subjects.OrderBy(x => random.Next()).Take(random.Next(1, Subjects.Length)).ToArray());
+            Professor professor = new Professor();
+            professor.FirstName = Faker.Name.First();
+            professor.MiddleName = Faker.Name.First();
+            professor.LastName = Faker.Name.Last();
+            professor.BirthdayDate = RandomDay().ToString("yyyy-MM-dd");
+            professor.PhoneNumber = RandomNumber();
+            professor.GroupName = RandomGroup().GroupName;
+            professor.Subjects = Subjects.OrderBy(x => random.Next()).Take(random.Next(1, Subjects.Length)).ToArray();
+            return professor;
         }
         public static Student generateStudent()
         {

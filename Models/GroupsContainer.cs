@@ -13,6 +13,7 @@ namespace SE2.CourseWork.Models
         public static ObservableCollection<Group> Groups { get; set; } = new ObservableCollection<Group>();
         public static Group FindOrCreateGroup(string groupName, string specialityFullName)
         {
+            if (groupName == null || groupName.Trim().Count() == 0) return null;
             var result = Groups.Where(group => group.GroupName.Equals(groupName));
             if(result.Count() == 0)
             {

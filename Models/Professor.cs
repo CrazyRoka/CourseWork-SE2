@@ -51,7 +51,7 @@ namespace SE2.CourseWork.Models
         {
             writer.WriteLine($"{professor.FirstName},{professor.MiddleName}" +
                 $",{professor.LastName},{professor.BirthdayDate},{professor.PhoneNumber}," +
-                $"{professor.GroupName},{professor.Speciality},{string.Join(";", professor.Subjects)}");
+                $"{string.Join(";", professor.Subjects)},{professor.GroupName},{professor.Speciality}");
             return writer;
         }
         public static StreamReader operator -(StreamReader reader, Professor professor)
@@ -59,9 +59,10 @@ namespace SE2.CourseWork.Models
             string line = reader.ReadLine();
             string[] parts = line.Split(',');
             professor.FirstName = parts[0]; professor.MiddleName = parts[1]; professor.LastName = parts[2]; professor.BirthdayDate = parts[3];
-            professor.PhoneNumber = parts[4]; professor.Group = GroupsContainer.FindOrCreateGroup(parts[5], parts[6]);
-            professor.Subjects = parts[7].Split(';');
-            professor.Group.Curator = professor;
+            professor.PhoneNumber = parts[4];
+            professor.Subjects = parts[5].Split(';');
+            professor.Group = GroupsContainer.FindOrCreateGroup(parts[6], parts[7]);
+            if(professor.Group != null) professor.Group.Curator = professor;
             return reader;
         }
     }
