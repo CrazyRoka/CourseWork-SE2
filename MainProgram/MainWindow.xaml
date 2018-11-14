@@ -73,8 +73,12 @@
                         <materialDesign:PackIcon Kind="Pencil" Width="24" Height="24" />
                     </materialDesign:PopupBox.ToggleCheckedContent>
                     <StackPanel>
-                        <Button ToolTip="Додати одну персону" Click="AddPersonClick" Content="1"/>
-                        <Button ToolTip="Зчитати дані про персон" Click="ReadPersons" Content="2"/>
+                        <Button ToolTip="Додати одну персону" Click="AddPersonClick">
+                            <materialDesign:PackIcon Kind="CirclesAdd" Height="20" Width="20" />
+                        </Button>
+                        <Button ToolTip="Зчитати дані про персон" Click="ReadPersons">
+                            <materialDesign:PackIcon Kind="FileDownload" Height="20" Width="20" />
+                        </Button>
                     </StackPanel>
                 </materialDesign:PopupBox>
                 <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}" ToolTip="Видалити записи" VerticalAlignment="Top" Margin="75,5,0,0" HorizontalAlignment="Left" Click="DeletePersonsClick">
@@ -195,8 +199,12 @@
                             <materialDesign:PackIcon Kind="Pencil" Width="24" Height="24" />
                         </materialDesign:PopupBox.ToggleCheckedContent>
                         <StackPanel>
-                            <Button ToolTip="Додати одного студента" Click="AddStudentClick" Content="1"/>
-                            <Button ToolTip="Зчитати дані про студентів" Click="ReadStudents" Content="2"/>
+                            <Button ToolTip="Додати одного студента" Click="AddStudentClick">
+                                <materialDesign:PackIcon Kind="CirclesAdd" Height="20" Width="20" />
+                            </Button>
+                            <Button ToolTip="Зчитати дані про студентів" Click="ReadStudents">
+                                <materialDesign:PackIcon Kind="FileDownload" Height="20" Width="20" />
+                            </Button>
                         </StackPanel>
                     </materialDesign:PopupBox>
                     <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}" ToolTip="Видалити записи" VerticalAlignment="Top" Margin="75,5,0,0" HorizontalAlignment="Left" Click="DeleteStudentsClick">
@@ -278,8 +286,12 @@
                         <materialDesign:PackIcon Kind="Pencil" Width="24" Height="24" />
                     </materialDesign:PopupBox.ToggleCheckedContent>
                     <StackPanel>
-                        <Button ToolTip="Додати одного викладача" Click="AddProfessorClick" Content="1"/>
-                        <Button ToolTip="Зчитати дані про викладачів" Click="ReadProfessors" Content="2"/>
+                        <Button ToolTip="Додати одного викладача" Click="AddProfessorClick">
+                            <materialDesign:PackIcon Kind="CirclesAdd" Height="20" Width="20" />
+                        </Button>
+                        <Button ToolTip="Зчитати дані про викладачів" Click="ReadProfessors">
+                            <materialDesign:PackIcon Kind="FileDownload" Height="20" Width="20" />
+                        </Button>
                     </StackPanel>
                 </materialDesign:PopupBox>
                 <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}" ToolTip="Видалити записи" VerticalAlignment="Top" Margin="75,5,0,0" HorizontalAlignment="Left" Click="DeleteProfessorsClick">

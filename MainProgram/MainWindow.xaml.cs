@@ -311,7 +311,7 @@ namespace SE2.CourseWork
                     }
                     else
                     {
-                        MessageBox.Show("Введіть дані про студентів.", "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show("Введіть дані про студентів.", "Результат пошуку", MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
                 }
             }

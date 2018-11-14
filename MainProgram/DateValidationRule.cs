@@ -16,7 +16,8 @@ namespace SE2.CourseWork
             try
             {
                 DateTime.ParseExact(value as string, "yyyy-MM-dd", null);
-            }catch(FormatException)
+            }
+            catch (FormatException)
             {
                 return new ValidationResult(false, "Неправильний формат дати. Будь ласка, дотримуйтесь формату: рік-місяць-день");
             }
